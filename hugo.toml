@@ -1,0 +1,49 @@
+baseURL = "https://softnova.com"
+languageCode = "es"
+title = "SoftNova"
+theme = "careercanvas"
+defaultContentLanguage = "es"
+defaultContentLanguageInSubdir = false
+
+[languages.es]
+  contentDir = "content/es"
+  languageName = "Español"
+  weight = 1
+  [languages.es.params]
+    tagline = "Frase principal de SoftNova. Segunda frase que rota."
+    hero_description = "Descripción breve del proyecto."
+    hero_location = "Montevideo, Uruguay"
+    collab_tags = ["Software", "Innovación", "Tu etiqueta"]
+
+[build]
+  writeStats = true
+
+[params]
+  name = "SoftNova"
+  email = "contacto@softnova.com"
+  profile_image = "/images/softnova-logo.png"
+  author = "SoftNova"
+  og_image = "images/softnova-og.png"
+  description = "Descripción del proyecto para SEO."
+  github_url = "https://github.com/tu-usuario/softnova"
+  github_text = "github.com/tu-usuario/softnova"
+  copyright = "© 2026 | SoftNova"
+  formspreeendpoint = ""   # para que funcione el formulario de contacto
+  pexelsapikey = ""        # fondos del hero desde Pexels (opcional)
+
+[[params.social]]
+  icon = "github"
+  url = "https://github.com/tu-usuario/softnova"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params.color_palettes]
+  [[params.color_palettes.palette]]
+    name = "softnova"
+    main_color = "#1E40AF"
+    second_color = "#06B6D4"
+    third_color = "#10B981"
+
+[params.pexels]
+  queries = ["technology", "software development", "abstract network"]
