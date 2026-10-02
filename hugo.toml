@@ -12,7 +12,7 @@ defaultContentLanguageInSubdir = false
   [languages.es.params]
     tagline = "Frase principal de SoftNova. Segunda frase que rota."
     hero_description = "Descripción breve del proyecto."
-    hero_location = "Montevideo, Uruguay"
+    hero_location = "Desarrollo web"
     collab_tags = ["Software", "Innovación", "Tu etiqueta"]
 
 [build]
@@ -21,7 +21,7 @@ defaultContentLanguageInSubdir = false
 [params]
   name = "SoftNova"
   email = "contacto@softnova.com"
-  profile_image = "/images/softnova-logo.png"
+  profile_image = "/images/Logo.png"
   author = "SoftNova"
   og_image = "images/softnova-og.png"
   description = "Descripción del proyecto para SEO."
