@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }} | Innovación digital</title>
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <link rel="icon" href="{{ "images/Logo.png" | relURL }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  {{ $css := resources.Get "css/softnova.css" | postCSS (dict "config" "./postcss.config.js") }}
+  {{ if hugo.IsProduction }}{{ $css = $css | minify | fingerprint }}{{ end }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+</head>
+<body class="min-h-screen antialiased">
+
+  <!-- Navegación -->
+  <header id="top" class="sticky top-0 z-50 backdrop-blur-md" style="background: rgba(6, 20, 67, 0.75);">
+    <nav class="sn-container flex h-20 items-center justify-between">
+      <a href="#inicio" aria-label="{{ .Site.Title }}">
+        <img src="{{ "images/Logo.png" | relURL }}" alt="{{ .Site.Title }}" class="h-14 w-auto sm:h-16">
+      </a>
+      <div class="hidden items-center gap-10 md:flex">
+        <a href="#inicio" class="sn-nav-link is-active">Inicio</a>
+        <a href="#servicios" class="sn-nav-link">Servicios</a>
+        <a href="#nosotros" class="sn-nav-link">Nosotros</a>
+        <a href="#contacto" class="sn-nav-link">Contacto</a>
+      </div>
+      <button id="sn-menu-btn" class="text-white md:hidden" aria-label="Abrir menú" aria-expanded="false">
+        <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="sn-menu" class="hidden border-t border-white/10 md:hidden">
+      <div class="sn-container flex flex-col gap-4 py-4">
+        <a href="#inicio" class="sn-nav-link">Inicio</a>
+        <a href="#servicios" class="sn-nav-link">Servicios</a>
+        <a href="#nosotros" class="sn-nav-link">Nosotros</a>
+        <a href="#contacto" class="sn-nav-link">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="inicio" class="relative overflow-hidden pb-20 pt-12 lg:pb-28 lg:pt-16">
+      <div class="sn-hero-bg" aria-hidden="true">
+        <span class="sn-line" style="left: -20%; top: 15%; --angle: 25deg; --delay: 0s;"></span>
+        
+        
+        
+        <span class="sn-curve" style="left: 82%; top: 55%; --delay: 2.4s;"></span>
+      </div>
+      <div class="sn-outline-diamond hidden lg:block" style="width: 420px; height: 420px; right: -120px; top: 20px;"></div>
+      <div class="sn-container relative z-10 grid items-center gap-14 lg:grid-cols-2">
+        <div>
+          <p class="sn-eyebrow">Tu negocio, en el mundo digital</p>
+          <h1 class="mt-4 text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
+            Bienvenidos a<br>
+            <span class="sn-gradient-text">Soft</span><span>Nova</span>
+          </h1>
+          <p class="mt-6 max-w-md text-lg text-white/85">
+            Desarrollo de soluciones digitales para hacer crecer tu negocio.
+          </p>
+          <a href="#servicios" class="sn-btn mt-8">
+            Conocé nuestros servicios
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        {{ if fileExists "static/images/hero.png" }}
+        <img src="{{ "images/hero.png" | relURL }}" alt="SoftNova en laptop y celular" class="relative w-full">
+        {{ else }}
+        <!-- Mockup de dispositivos (reemplazable por static/images/hero.png) -->
+        <div class="relative mx-auto w-full max-w-lg pb-6 pr-10 sm:pr-16">
+          <div class="sn-laptop-screen aspect-[16/10]">
+            {{ partial "code-editor.html" (dict "class" "sn-editor-screen p-3 text-[7px] leading-[1.5] sm:text-[9px]") }}
+          </div>
+          <div class="sn-laptop-base"></div>
+          <div class="sn-phone bottom-0 right-0 w-[26%] sm:w-[24%]" style="aspect-ratio: 9/18;">
+            {{ partial "code-editor.html" (dict "class" "sn-editor-screen px-1.5 pt-3 text-[3.5px] leading-[1.5] sm:text-[4.5px]") }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="scroll-mt-20 py-16 lg:py-20">
+      <div class="sn-container">
+        <p class="sn-eyebrow">Qué hacemos</p>
+        <h2 class="sn-title mt-2">Nuestros servicios</h2>
+        <p class="sn-muted mt-3 max-w-md">Te ayudamos a tener una presencia profesional y efectiva en Internet.</p>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          {{ $services := slice
+            (dict "title" "Desarrollo web" "text" "Creamos páginas web modernas, rápidas y adaptadas a celulares." "icon" `<path stroke-linecap="round" stroke-linejoin="round" d="m8 8-4 4 4 4m8-8 4 4-4 4m-6 3 4-14"/>`)
+            (dict "title" "Diseño personalizado" "text" "Diseñamos sitios que representan la identidad de cada negocio." "icon" `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.9 1.7-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="11.5" r="1.2" fill="currentColor"/><circle cx="10.5" cy="7.5" r="1.2" fill="currentColor"/><circle cx="15" cy="8" r="1.2" fill="currentColor"/>`)
+            (dict "title" "Presencia digital" "text" "Te ayudamos a tener una presencia profesional en Internet." "icon" `<path stroke-linecap="round" d="M6 20v-6m4 6V10m4 10v-8m4 8V6"/>`)
+          }}
+          {{ range $services }}
+          <article class="sn-card group flex flex-col">
+            <div class="sn-icon-tile">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{{ .icon | safeHTML }}</svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-white">{{ .title }}</h3>
+            <p class="sn-muted mt-2 text-sm leading-relaxed">{{ .text }}</p>
+            
+          </article>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="scroll-mt-20 py-16 lg:py-20">
+      <div class="sn-container grid items-center gap-14 lg:grid-cols-2">
+        <div class="relative">
+          <div class="sn-outline-diamond hidden sm:block" style="width: 220px; height: 220px; left: -60px; top: 50%; margin-top: -110px;"></div>
+          {{ if fileExists "static/images/image_construction.png" }}
+          <img src="{{ "images/image_construction.png" | relURL }}" alt="Laptop con un sitio web en construcción" class="relative w-full rounded-2xl shadow-2xl" loading="lazy">
+          {{ else }}
+          <!-- Editor de código (fallback si falta static/images/image_construction.png) -->
+          {{ partial "code-editor.html" (dict "class" "") }}
+          {{ end }}
+        </div>
+
+        <div>
+          <p class="sn-eyebrow">Sobre nosotros</p>
+          <h2 class="sn-title mt-2">Pasión por la tecnología</h2>
+          <p class="mt-4 max-w-lg leading-relaxed text-white/85">
+            En <strong class="text-white">SoftNova</strong> combinamos creatividad y tecnología para desarrollar soluciones digitales a medida.
+            Creemos en un trabajo cercano, transparente y enfocado en tus objetivos.
+          </p>
+
+          <div class="mt-10 grid gap-8 sm:grid-cols-3">
+            {{ $values := slice
+              (dict "title" "Compromiso" "text" "Tu proyecto es nuestra prioridad." "icon" `<path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>`)
+              (dict "title" "Cercanía" "text" "Te acompañamos en todo el proceso." "icon" `<path fill="currentColor" d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM1 20c0-3.3 3.6-6 8-6s8 2.7 8 6v1H1v-1Zm17.5 1v-1c0-1.9-.8-3.6-2.1-4.9 3.6.2 6.6 2.4 6.6 4.9v1h-4.5Z"/>`)
+              (dict "title" "Calidad" "text" "Soluciones robustas y escalables." "icon" `<path fill="currentColor" d="m12 2 3 6.6 7 .7-5.3 4.8 1.6 7L12 17.5 5.7 21l1.6-7L2 9.3l7-.7L12 2Z"/>`)
+            }}
+            {{ range $values }}
+            <div>
+              <div class="sn-icon-circle">
+                <svg class="h-5 w-5" viewBox="0 0 24 24">{{ .icon | safeHTML }}</svg>
+              </div>
+              <h3 class="mt-4 font-semibold text-white">{{ .title }}</h3>
+              <p class="sn-muted mt-1 text-sm">{{ .text }}</p>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso -->
+    <section id="proceso" class="py-16 lg:py-20">
+      <div class="sn-container">
+        <p class="sn-eyebrow">Cómo trabajamos</p>
+        <h2 class="sn-title mt-2">Un proceso simple y efectivo</h2>
+        <p class="sn-muted mt-3">Desde la idea hasta el resultado, te acompañamos en cada paso.</p>
+
+        {{ $steps := slice
+          (dict "title" "Consultoría" "text" "Analizamos tus necesidades y objetivos.")
+          (dict "title" "Diseño" "text" "Creamos una propuesta personalizada.")
+          (dict "title" "Desarrollo" "text" "Construimos tu solución con las mejores tecnologías.")
+          (dict "title" "Lanzamiento" "text" "Ponemos tu proyecto en marcha y te acompañamos.")
+        }}
+        <ol class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {{ range $i, $s := $steps }}
+          <li>
+            <div class="flex items-center gap-4">
+              <span class="sn-step">{{ add $i 1 }}</span>
+              {{ if lt $i 3 }}<span class="hidden h-px flex-1 lg:block" style="background: linear-gradient(90deg, var(--sn-blue), rgba(29,108,242,0.3));"></span>{{ end }}
+            </div>
+            <h3 class="mt-4 font-semibold text-white">{{ $s.title }}</h3>
+            <p class="sn-muted mt-1 max-w-[14rem] text-sm">{{ $s.text }}</p>
+          </li>
+          {{ end }}
+        </ol>
+      </div>
+    </section>
+
+    <!-- CTA / Contacto -->
+    <section id="contacto" class="scroll-mt-20 py-12">
+      <div class="sn-container">
+        <div class="sn-cta flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div class="sn-outline-diamond hidden md:block" style="width: 160px; height: 160px; right: -90px; top: 50%; margin-top: -80px;"></div>
+          <div class="flex items-start gap-6">
+            <span class="hidden text-5xl sm:block" aria-hidden="true">🚀</span>
+            <div>
+              <h2 class="text-2xl font-semibold leading-snug text-white">¿Listo para llevar tu negocio<br class="hidden sm:block"> al siguiente nivel?</h2>
+              <p class="mt-3 max-w-md text-sm text-white/80">Hablemos y encontremos juntos la mejor solución para tu empresa.</p>
+            </div>
+          </div>
+          <a href="mailto:{{ .Site.Params.email }}" class="sn-btn relative z-10 shrink-0 self-start md:mr-16 md:self-auto">
+            Contactanos
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pb-8 pt-6">
+    <div class="sn-container">
+      <div class="flex flex-col items-center gap-6 border-b border-white/10 pb-6 md:flex-row md:justify-between">
+        <img src="{{ "images/Logo.png" | relURL }}" alt="{{ .Site.Title }}" class="h-12 w-auto">
+        <ul class="flex flex-wrap items-center justify-center gap-x-3 text-sm text-white/80">
+          <li><a href="#servicios" class="hover:text-white">Desarrollo web</a></li>
+          <li aria-hidden="true">·</li>
+          <li><a href="#servicios" class="hover:text-white">Diseño</a></li>
+          <li aria-hidden="true">·</li>
+          <li><a href="#servicios" class="hover:text-white">Presencia digital</a></li>
+        </ul>
+        <div class="flex items-center gap-5 text-white">
+          <a href="#" aria-label="Instagram" class="transition hover:text-[color:var(--sn-cyan)]">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="transition hover:text-[color:var(--sn-cyan)]">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 12 2Z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="transition hover:text-[color:var(--sn-cyan)]">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.3 18.3H5.7V9.8h2.6v8.5ZM7 8.6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm11.3 9.7h-2.6v-4.1c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2v4.2h-2.6V9.8h2.5v1.2c.4-.7 1.2-1.4 2.5-1.4 2.7 0 3.2 1.8 3.2 4.1v4.6Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <p class="mt-6 text-center text-xs text-white/50">© {{ now.Year }} {{ .Site.Title }}. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('sn-menu-btn');
+      var menu = document.getElementById('sn-menu');
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', open);
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { menu.classList.add('hidden'); });
+      });
+
+      // Resalta el enlace de la sección visible
+      var links = document.querySelectorAll('.sn-nav-link');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (l) {
+            l.classList.toggle('is-active', l.getAttribute('href') === '#' + entry.target.id);
+          });
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      ['inicio', 'servicios', 'nosotros', 'contacto'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
