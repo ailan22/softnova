@@ -21,6 +21,7 @@ defaultContentLanguageInSubdir = false
 [params]
   name = "SoftNova"
   email = "contacto@softnova.com"
+  phone = ""  # ej. "+598 99 123 456", se muestra junto al ícono de WhatsApp
   profile_image = "/images/Logo.png"
   author = "SoftNova"
   og_image = "images/softnova-og.png"
