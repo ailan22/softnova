@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ .Site.Title }} | Innovación digital</title>
   <meta name="description" content="{{ .Site.Params.description }}">
-  <link rel="icon" href="{{ " images/Logo.png" | relURL }}">
+  <link rel="icon" href="{{ "images/Logo.png" | relURL }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
   <header id="top" class="sticky top-0 z-50 backdrop-blur-md" style="background: rgba(6, 20, 67, 0.75);">
     <nav class="sn-container flex h-20 items-center justify-between">
       <a href="#inicio" aria-label="{{ .Site.Title }}">
-        <img src="{{ " images/Logo.png" | relURL }}" alt="{{ .Site.Title }}" class="h-14 w-auto sm:h-16">
+        <img src="{{ "images/Logo.png" | relURL }}" alt="{{ .Site.Title }}" class="h-14 w-auto sm:h-16">
       </a>
       <div class="hidden items-center gap-10 md:flex">
         <a href="#inicio" class="sn-nav-link is-active">Inicio</a>
@@ -390,16 +390,13 @@
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z" />
           <path stroke-linecap="round" stroke-linejoin="round" d="m8.8 12 2.2 2.2 4.2-4.4" />`)
-          (dict "title" "Estadísticas y análisis" "text" "Medimos lo que sucede en tu web para ayudarte a tomar mejores
-          decisiones." "icon" `
+          (dict "title" "Estadísticas y análisis" "text" "Medimos lo que sucede en tu web para ayudarte a tomar mejores decisiones." "icon" `
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18" />
           <path stroke-linecap="round" stroke-linejoin="round" d="m7 15 4-4 3 3 5-6" />`)
-          (dict "title" "Posicionamiento SEO" "text" "Optimizamos los sitios para mejorar su presencia en buscadores
-          como Google, trabajando aspectos técnicos, estructura, títulos, descripciones y contenido." "icon" `
+          (dict "title" "Posicionamiento SEO" "text" "Optimizamos los sitios para mejorar su presencia en buscadores como Google, trabajando aspectos técnicos, estructura, títulos, descripciones y contenido." "icon" `
           <circle cx="11" cy="11" r="7" />
           <path stroke-linecap="round" d="m20 20-3.5-3.5" />`)
-          (dict "title" "Mantenimiento web" "text" "Realizamos mejoras y ajustes para mantener el sitio actualizado,
-          rápido, seguro y funcionando correctamente." "icon" `
+          (dict "title" "Mantenimiento web" "text" "Realizamos mejoras y ajustes para mantener el sitio actualizado, rápido, seguro y funcionando correctamente." "icon" `
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
           `)
@@ -458,8 +455,7 @@
           </div>
           <div class="sn-laptop-base"></div>
           <div class="sn-phone bottom-0 right-0 w-[26%] sm:w-[24%]" style="aspect-ratio: 9/18;">
-            {{ partial "code-editor.html" (dict "class" "sn-editor-screen px-1.5 pt-3 text-[3.5px] leading-[1.5]
-            sm:text-[4.5px]") }}
+            {{ partial "code-editor.html" (dict "class" "sn-editor-screen px-1.5 pt-3 text-[3.5px] leading-[1.5] sm:text-[4.5px]") }}
           </div>
         </div>
 
