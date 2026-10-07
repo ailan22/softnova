@@ -96,7 +96,7 @@
           {{ $services := slice
             (dict "title" "Desarrollo web" "text" "Creamos páginas web modernas, rápidas y adaptadas a celulares." "icon" `<path stroke-linecap="round" stroke-linejoin="round" d="m8 8-4 4 4 4m8-8 4 4-4 4m-6 3 4-14"/>`)
             (dict "title" "Diseño personalizado" "text" "Diseñamos sitios que representan la identidad de cada negocio." "icon" `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.9 1.7-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="11.5" r="1.2" fill="currentColor"/><circle cx="10.5" cy="7.5" r="1.2" fill="currentColor"/><circle cx="15" cy="8" r="1.2" fill="currentColor"/>`)
-            (dict "title" "Presencia digital" "text" "Te ayudamos a tener una presencia profesional en Internet." "icon" `<path stroke-linecap="round" d="M6 20v-6m4 6V10m4 10v-8m4 8V6"/>`)
+            (dict "title" "Seguridad web" "text" "Protegemos tu sitio frente a amenazas y vulnerabilidades." "icon" `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m8.8 12 2.2 2.2 4.2-4.4"/>`)
             (dict "title" "Estadísticas y análisis" "text" "Medimos lo que sucede en tu web para ayudarte a tomar mejores decisiones." "icon" `<path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18"/><path stroke-linecap="round" stroke-linejoin="round" d="m7 15 4-4 3 3 5-6"/>`)
             (dict "title" "Posicionamiento SEO" "text" "Optimizamos los sitios para mejorar su presencia en buscadores como Google, trabajando aspectos técnicos, estructura, títulos, descripciones y contenido." "icon" `<circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/>`)
             (dict "title" "Mantenimiento web" "text" "Realizamos mejoras y ajustes para mantener el sitio actualizado, rápido, seguro y funcionando correctamente." "icon" `<path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>`)
@@ -119,9 +119,284 @@
     <section id="nosotros" class="scroll-mt-20 py-16 lg:py-20">
       <div class="sn-container grid items-center gap-14 lg:grid-cols-2">
         <div class="relative">
-          <div class="sn-outline-diamond hidden sm:block" style="width: 220px; height: 220px; left: -60px; top: 50%; margin-top: -110px;"></div>
+          <!--<div class="sn-outline-diamond hidden sm:block" style="width: 220px; height: 220px; left: -60px; top: 50%; margin-top: -110px;"></div>-->
           {{ if fileExists "static/images/image_construction.png" }}
-          <img src="{{ "images/image_construction.png" | relURL }}" alt="Laptop con un sitio web en construcción" class="relative w-full rounded-2xl shadow-2xl" loading="lazy">
+          <!-- Ilustración animada: desarrollo web (SoftNova) -->
+          <div class="sn-anim" aria-hidden="true">
+            <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sn-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#2563eb" stop-opacity=".30" />
+                  <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="sn-hero" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#2563eb" />
+                  <stop offset="100%" stop-color="#1e3a8a" />
+                </linearGradient>
+              </defs>
+          
+              <!-- Halo de fondo -->
+              <circle cx="230" cy="175" r="175" fill="url(#sn-glow)" />
+          
+              <!-- Ventana del navegador -->
+              <g class="sn-window">
+                <rect x="50" y="50" width="330" height="245" rx="14" fill="#0a1440" stroke="#1e40af" stroke-opacity=".8" />
+                <line x1="50" y1="82" x2="380" y2="82" stroke="#1e40af" stroke-opacity=".6" />
+                <circle cx="70" cy="66" r="4" fill="#ef4444" opacity=".8" />
+                <circle cx="86" cy="66" r="4" fill="#f59e0b" opacity=".8" />
+                <circle cx="102" cy="66" r="4" fill="#22c55e" opacity=".8" />
+                <rect x="125" y="59" width="180" height="14" rx="7" fill="#111d55" />
+                <text x="215" y="69" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8"
+                  fill="#64748b">https://www.softnova.uy</text>
+                <line x1="205" y1="82" x2="205" y2="295" stroke="#1e40af" stroke-opacity=".4" />
+          
+                <!-- Código que se va escribiendo -->
+                <g class="sn-line" style="--d:0s">
+                  <rect x="66" y="98" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="80" y="98" width="34" height="6" rx="3" fill="#60a5fa" />
+                  <rect x="118" y="98" width="22" height="6" rx="3" fill="#38bdf8" />
+                </g>
+                <g class="sn-line" style="--d:.25s">
+                  <rect x="78" y="112" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="112" width="24" height="6" rx="3" fill="#60a5fa" />
+                  <rect x="120" y="112" width="40" height="6" rx="3" fill="#4ade80" />
+                </g>
+                <g class="sn-line" style="--d:.5s">
+                  <rect x="90" y="126" width="46" height="6" rx="3" fill="#94a3b8" />
+                  <rect x="140" y="126" width="20" height="6" rx="3" fill="#fbbf24" />
+                </g>
+                <g class="sn-line" style="--d:.75s">
+                  <rect x="90" y="140" width="30" height="6" rx="3" fill="#a78bfa" />
+                  <rect x="124" y="140" width="36" height="6" rx="3" fill="#94a3b8" />
+                </g>
+                <g class="sn-line" style="--d:1s">
+                  <rect x="78" y="154" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="154" width="24" height="6" rx="3" fill="#60a5fa" />
+                </g>
+                <g class="sn-line" style="--d:1.25s">
+                  <rect x="78" y="168" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="168" width="20" height="6" rx="3" fill="#60a5fa" />
+                  <rect x="116" y="168" width="30" height="6" rx="3" fill="#4ade80" />
+                </g>
+                <g class="sn-line" style="--d:1.5s">
+                  <rect x="90" y="182" width="56" height="6" rx="3" fill="#94a3b8" />
+                </g>
+                <g class="sn-line" style="--d:1.75s">
+                  <rect x="90" y="196" width="22" height="6" rx="3" fill="#fbbf24" />
+                  <rect x="116" y="196" width="28" height="6" rx="3" fill="#94a3b8" />
+                </g>
+                <g class="sn-line" style="--d:2s">
+                  <rect x="78" y="210" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="210" width="20" height="6" rx="3" fill="#60a5fa" />
+                </g>
+                <g class="sn-line" style="--d:2.25s">
+                  <rect x="66" y="224" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="80" y="224" width="34" height="6" rx="3" fill="#60a5fa" />
+                </g>
+                <rect class="sn-blink" x="118" y="222" width="2" height="10" fill="#38bdf8" />
+          
+                <!-- Página que se va construyendo -->
+                <g class="sn-pop" style="--d:.4s">
+                  <rect x="215" y="94" width="150" height="12" rx="3" fill="#13205e" />
+                  <circle cx="223" cy="100" r="3" fill="#38bdf8" />
+                  <rect x="318" y="98" width="12" height="4" rx="2" fill="#475569" />
+                  <rect x="334" y="98" width="12" height="4" rx="2" fill="#475569" />
+                  <rect x="350" y="98" width="10" height="4" rx="2" fill="#3b82f6" />
+                </g>
+                <g class="sn-pop" style="--d:1.2s">
+                  <rect x="215" y="114" width="150" height="58" rx="6" fill="url(#sn-hero)" />
+                  <rect x="225" y="127" width="80" height="7" rx="3" fill="#fff" opacity=".9" />
+                  <rect x="225" y="140" width="60" height="5" rx="2.5" fill="#fff" opacity=".55" />
+                  <rect x="225" y="153" width="36" height="10" rx="5" fill="#0b1650" />
+                </g>
+                <g class="sn-pop" style="--d:2s">
+                  <rect x="215" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
+                  <circle cx="227" cy="193" r="5" fill="#3b82f6" />
+                  <rect x="221" y="204" width="32" height="4" rx="2" fill="#475569" />
+                  <rect x="221" y="212" width="22" height="4" rx="2" fill="#334155" />
+                </g>
+                <g class="sn-pop" style="--d:2.3s">
+                  <rect x="267" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
+                  <circle cx="279" cy="193" r="5" fill="#3b82f6" />
+                  <rect x="273" y="204" width="32" height="4" rx="2" fill="#475569" />
+                  <rect x="273" y="212" width="22" height="4" rx="2" fill="#334155" />
+                </g>
+                <g class="sn-pop" style="--d:2.6s">
+                  <rect x="319" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
+                  <circle cx="331" cy="193" r="5" fill="#3b82f6" />
+                  <rect x="325" y="204" width="32" height="4" rx="2" fill="#475569" />
+                  <rect x="325" y="212" width="22" height="4" rx="2" fill="#334155" />
+                </g>
+                <g class="sn-pop" style="--d:3s">
+                  <rect x="215" y="234" width="150" height="5" rx="2.5" fill="#1e2a6b" />
+                  <rect x="215" y="245" width="110" height="5" rx="2.5" fill="#1e2a6b" />
+                </g>
+                <g class="sn-pop" style="--d:3.4s">
+                  <circle cx="219" cy="274" r="3.5" fill="#22c55e" />
+                  <text x="228" y="277" font-family="ui-monospace, monospace" font-size="8" fill="#4ade80">Build exitoso</text>
+                </g>
+              </g>
+          
+              <!-- Etiquetas flotantes -->
+              <g class="sn-bob" style="--d:0s">
+                <rect x="340" y="22" width="64" height="34" rx="10" fill="#0f1d5c" stroke="#3b82f6" stroke-opacity=".8" />
+                <text x="372" y="45" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="700"
+                  fill="#60a5fa">&lt;/&gt;</text>
+              </g>
+              <g class="sn-bob" style="--d:-2.5s">
+                <rect x="16" y="250" width="68" height="34" rx="10" fill="#0f1d5c" stroke="#8b5cf6" stroke-opacity=".7" />
+                <text x="50" y="273" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="700"
+                  fill="#a78bfa">{ }</text>
+              </g>
+              <g class="sn-bob" style="--d:-1.2s">
+                <rect x="318" y="302" width="124" height="42" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
+                <circle cx="340" cy="323" r="12" fill="none" stroke="#14532d" stroke-width="3" />
+                <circle class="sn-gauge" cx="340" cy="323" r="12" fill="none" stroke="#22c55e" stroke-width="3"
+                  stroke-linecap="round" />
+                <text x="340" y="326" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="700"
+                  fill="#e2e8f0">100</text>
+                <text x="360" y="326" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">Rendimiento</text>
+              </g>
+            </svg>
+          </div>
+          
+          <style>
+            .sn-anim {
+              width: 100%;
+              max-width: 520px;
+              margin-inline: auto;
+            }
+          
+            .sn-anim svg {
+              display: block;
+              width: 100%;
+              height: auto;
+              overflow: visible;
+            }
+          
+            .sn-window {
+              filter: drop-shadow(0 0 28px rgba(37, 99, 235, .35));
+              animation: sn-float 7s ease-in-out infinite;
+            }
+          
+            .sn-line {
+              transform-box: fill-box;
+              transform-origin: left center;
+              transform: scaleX(0);
+              animation: sn-type 8s ease-out infinite;
+              animation-delay: var(--d);
+            }
+          
+            .sn-pop {
+              opacity: 0;
+              animation: sn-pop 8s ease-out infinite;
+              animation-delay: var(--d);
+            }
+          
+            .sn-blink {
+              animation: sn-blink 1s steps(1) infinite;
+            }
+          
+            .sn-bob {
+              animation: sn-bob 5s ease-in-out infinite;
+              animation-delay: var(--d, 0s);
+            }
+          
+            .sn-gauge {
+              stroke-dasharray: 75.4;
+              stroke-dashoffset: 75.4;
+              transform: rotate(-90deg);
+              transform-box: fill-box;
+              transform-origin: center;
+              animation: sn-gauge 8s ease-out infinite;
+              animation-delay: 3.4s;
+            }
+          
+            @keyframes sn-float {
+              50% {
+                transform: translateY(-8px);
+              }
+            }
+          
+            @keyframes sn-bob {
+              50% {
+                transform: translateY(-10px);
+              }
+            }
+          
+            @keyframes sn-blink {
+              50% {
+                opacity: 0;
+              }
+            }
+          
+            @keyframes sn-type {
+              0% {
+                transform: scaleX(0);
+              }
+          
+              6%,
+              80% {
+                transform: scaleX(1);
+              }
+          
+              88%,
+              100% {
+                transform: scaleX(0);
+              }
+            }
+          
+            @keyframes sn-pop {
+              0% {
+                opacity: 0;
+                transform: translateY(6px);
+              }
+          
+              6%,
+              80% {
+                opacity: 1;
+                transform: none;
+              }
+          
+              88%,
+              100% {
+                opacity: 0;
+                transform: translateY(6px);
+              }
+            }
+          
+            @keyframes sn-gauge {
+              0% {
+                stroke-dashoffset: 75.4;
+              }
+          
+              12%,
+              80% {
+                stroke-dashoffset: 0;
+              }
+          
+              90%,
+              100% {
+                stroke-dashoffset: 75.4;
+              }
+            }
+          
+            @media (prefers-reduced-motion: reduce) {
+              .sn-anim * {
+                animation: none !important;
+              }
+          
+              .sn-line,
+              .sn-pop {
+                opacity: 1;
+                transform: none;
+              }
+          
+              .sn-gauge {
+                stroke-dashoffset: 0;
+              }
+            }
+          </style>
           {{ else }}
           <!-- Editor de código (fallback si falta static/images/image_construction.png) -->
           {{ partial "code-editor.html" (dict "class" "") }}
