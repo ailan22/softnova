@@ -158,6 +158,7 @@
 }
 
 @layer components {
+
   /* Editor dentro de las pantallas de la laptop y el celular */
   .sn-editor.sn-editor-screen {
     @apply h-full w-full rounded-none border-0 shadow-none;
@@ -169,12 +170,12 @@
   .sn-hero-bg {
     @apply pointer-events-none absolute inset-0 overflow-hidden;
     background: linear-gradient(135deg,
-      #0a1f6e 0%, #0a1333 20%, #020f30 40%, #1e40af 60%, #0a1f6e 75%, #0a1f6e 90%, #050813 100%);
+        #0a1f6e 0%, #0a1333 20%, #020f30 40%, #1e40af 60%, #0a1f6e 75%, #0a1f6e 90%, #050813 100%);
     -webkit-mask-image: linear-gradient(180deg, #000 75%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 75%, transparent 100%);
   }
 
-  .sn-hero-bg > span {
+  .sn-hero-bg>span {
     position: absolute;
     display: block;
   }
@@ -213,30 +214,94 @@
   }
 
   @keyframes sn-spin-half {
-    from { transform: rotate(var(--angle, 0deg)); }
-    to { transform: rotate(calc(var(--angle, 0deg) + 180deg)); }
+    from {
+      transform: rotate(var(--angle, 0deg));
+    }
+
+    to {
+      transform: rotate(calc(var(--angle, 0deg) + 180deg));
+    }
   }
 
   @keyframes sn-spin {
-    to { transform: rotate(360deg); }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   @keyframes sn-line-pulse {
-    from { opacity: 0; transform: scaleX(1); }
-    to { opacity: 0.4; transform: scaleX(4); }
+    from {
+      opacity: 0;
+      transform: scaleX(1);
+    }
+
+    to {
+      opacity: 0.4;
+      transform: scaleX(4);
+    }
   }
 
   @keyframes sn-curve-morph {
-    from { opacity: 0; transform: scale(1); border-radius: 50%; }
-    to { opacity: 0.6; transform: scale(1.2); border-radius: 0%; }
+    from {
+      opacity: 0;
+      transform: scale(1);
+      border-radius: 50%;
+    }
+
+    to {
+      opacity: 0.6;
+      transform: scale(1.2);
+      border-radius: 0%;
+    }
+  }
+
+  /* Pasos del proceso: aparecen uno tras otro al entrar en pantalla */
+  .sn-steps.is-ready>li {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: calc(var(--i, 0) * 0.25s);
+  }
+
+  .sn-steps.is-ready .sn-step-line {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+    transition-delay: calc(var(--i, 0) * 0.25s + 0.35s);
+  }
+
+  .sn-steps.is-visible>li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sn-steps.is-visible .sn-step-line {
+    transform: scaleX(1);
   }
 
   @media (prefers-reduced-motion: reduce) {
+
+    .sn-steps.is-ready>li,
+    .sn-steps.is-ready .sn-step-line {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
     .sn-hero-bg *,
     .sn-hero-bg *::before {
       animation: none !important;
     }
-    .sn-line::before { opacity: 0.25; }
-    .sn-curve::before { opacity: 0.4; }
+
+    .sn-line::before {
+      opacity: 0.25;
+    }
+
+    .sn-curve::before {
+      opacity: 0.4;
+    }
   }
 }
