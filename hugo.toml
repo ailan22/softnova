@@ -1,4 +1,4 @@
-baseURL = "https://softnova.com"
+baseURL = "https://www.softnova.uy"
 languageCode = "es"
 title = "SoftNova"
 theme = "careercanvas"
@@ -20,12 +20,12 @@ defaultContentLanguageInSubdir = false
 
 [params]
   name = "SoftNova"
-  email = "contacto@softnova.com"
+  email = "softnova.contacto@gmail.com"
   phone = ""  # ej. "+598 99 123 456", se muestra junto al ícono de WhatsApp
   profile_image = "/images/Logo.png"
   author = "SoftNova"
   og_image = "images/softnova-og.png"
-  description = "Descripción del proyecto para SEO."
+  description = "Desarrollo web y diseño para hacer crecer tu negocio"
   github_url = "https://github.com/tu-usuario/softnova"
   github_text = "github.com/tu-usuario/softnova"
   copyright = "© 2026 | SoftNova"
