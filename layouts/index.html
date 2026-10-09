@@ -557,21 +557,16 @@
     <!-- CTA / Contacto -->
     <section id="contacto" class="scroll-mt-20 py-12">
       <div class="sn-container">
-        <!-- Formulario de contacto: usa Formspree si está configurado, si no FormSubmit con el correo del sitio -->
-        {{ $formAction := site.Params.formspreeendpoint | default (printf "https://formsubmit.co/ajax/%s" site.Params.email) }}
-        {{ $honeypot := cond (ne site.Params.formspreeendpoint "") "_gotcha" "_honey" }}
+        <!-- Formulario de contacto: lo recibe el Worker de Cloudflare (worker/index.js) y lo reenvía por correo -->
         <div class="mt-10 grid gap-8 md:grid-cols-5">
           <div class="md:col-span-2">
             <p class="sn-eyebrow">Escribinos</p>
             <h2 class="sn-title mt-2">Envianos tu mensaje</h2>
             <p class="sn-muted mt-4 text-sm">Contanos sobre tu proyecto y te respondemos a la brevedad.</p>
           </div>
-          <form id="sn-contact-form" action="{{ $formAction }}" method="POST"
+          <form id="sn-contact-form" action="/api/contacto" method="POST"
             class="sn-card grid gap-4 sm:grid-cols-2 md:col-span-3">
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde softnova.uy">
-            <input type="hidden" name="_next" value="{{ "?enviado=1#contacto" | absURL }}">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="{{ $honeypot }}" class="hidden" tabindex="-1" autocomplete="off">
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
             <label class="flex flex-col gap-2 text-sm font-medium">
               Nombre
               <input type="text" name="nombre" required autocomplete="name" class="sn-input" placeholder="Tu nombre">
@@ -672,32 +667,33 @@
           submit.disabled = true;
           status.className = 'text-sm sn-muted';
           status.textContent = 'Enviando…';
-          // FormData sin Content-Type propio evita la consulta CORS previa, que algunos navegadores móviles bloquean
           fetch(form.action, {
             method: 'POST',
             headers: { 'Accept': 'application/json' },
             body: new FormData(form)
           }).then(function (res) {
             return res.json().catch(function () { return {}; }).then(function (data) {
-              if (!res.ok || data.success === 'false' || data.success === false) throw new Error(data.message || res.status);
+              if (!res.ok || !data.ok) throw new Error(data.message || res.status);
             });
           }).then(function () {
             form.reset();
             status.className = 'text-sm text-green-400';
             status.textContent = '¡Gracias! Recibimos tu mensaje.';
-            submit.disabled = false;
           }).catch(function (err) {
-            // Si el envío en segundo plano falla, se envía como formulario normal (vuelve a la página con ?enviado=1)
             console.error('Formulario de contacto:', err);
-            status.textContent = 'Enviando…';
-            form.action = form.action.replace('/ajax/', '/');
-            form.submit();
+            status.className = 'text-sm text-red-400';
+            status.textContent = 'No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.';
+          }).finally(function () {
+            submit.disabled = false;
           });
         });
 
         if (/[?&]enviado=1/.test(location.search)) {
           status.className = 'text-sm text-green-400';
           status.textContent = '¡Gracias! Recibimos tu mensaje.';
+        } else if (/[?&]enviado=0/.test(location.search)) {
+          status.className = 'text-sm text-red-400';
+          status.textContent = 'No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.';
         }
       }
 

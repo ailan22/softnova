@@ -29,7 +29,7 @@ defaultContentLanguageInSubdir = false
   github_url = "https://github.com/tu-usuario/softnova"
   github_text = "github.com/tu-usuario/softnova"
   copyright = "© 2026 | SoftNova"
-  formspreeendpoint = ""   # para que funcione el formulario de contacto
+  # el formulario de contacto lo recibe worker/index.js (ver CONTACT_EMAIL en wrangler.jsonc)
   pexelsapikey = ""        # fondos del hero desde Pexels (opcional)
 
 [[params.social]]
