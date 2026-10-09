@@ -150,6 +150,18 @@
     box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.9);
   }
 
+  .sn-input {
+    @apply w-full rounded-xl px-4 py-3 text-sm font-normal text-white transition placeholder:text-white/40;
+    background: rgba(4, 11, 43, 0.6);
+    border: 1px solid var(--sn-border);
+  }
+
+  .sn-input:focus {
+    @apply outline-none;
+    border-color: var(--sn-cyan);
+    box-shadow: 0 0 0 3px rgba(34, 184, 245, 0.25);
+  }
+
   .sn-cta {
     @apply relative overflow-hidden rounded-2xl px-6 py-8 sm:px-10;
     background: linear-gradient(90deg, #0b1f6e 0%, #0d2a9a 55%, #0a1a5c 100%);
