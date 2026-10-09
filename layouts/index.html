@@ -569,6 +569,7 @@
           <form id="sn-contact-form" action="{{ $formAction }}" method="POST"
             class="sn-card grid gap-4 sm:grid-cols-2 md:col-span-3">
             <input type="hidden" name="_subject" value="Nuevo mensaje desde softnova.uy">
+            <input type="hidden" name="_next" value="{{ "?enviado=1#contacto" | absURL }}">
             <input type="text" name="{{ $honeypot }}" class="hidden" tabindex="-1" autocomplete="off">
             <label class="flex flex-col gap-2 text-sm font-medium">
               Nombre
@@ -670,22 +671,33 @@
           submit.disabled = true;
           status.className = 'text-sm sn-muted';
           status.textContent = 'Enviando…';
+          // FormData sin Content-Type propio evita la consulta CORS previa, que algunos navegadores móviles bloquean
           fetch(form.action, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
           }).then(function (res) {
-            if (!res.ok) throw new Error(res.status);
+            return res.json().catch(function () { return {}; }).then(function (data) {
+              if (!res.ok || data.success === 'false' || data.success === false) throw new Error(data.message || res.status);
+            });
+          }).then(function () {
             form.reset();
             status.className = 'text-sm text-green-400';
             status.textContent = '¡Gracias! Recibimos tu mensaje.';
-          }).catch(function () {
-            status.className = 'text-sm text-red-400';
-            status.textContent = 'No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.';
-          }).finally(function () {
             submit.disabled = false;
+          }).catch(function (err) {
+            // Si el envío en segundo plano falla, se envía como formulario normal (vuelve a la página con ?enviado=1)
+            console.error('Formulario de contacto:', err);
+            status.textContent = 'Enviando…';
+            form.action = form.action.replace('/ajax/', '/');
+            form.submit();
           });
         });
+
+        if (/[?&]enviado=1/.test(location.search)) {
+          status.className = 'text-sm text-green-400';
+          status.textContent = '¡Gracias! Recibimos tu mensaje.';
+        }
       }
 
       // Muestra los pasos del proceso de a uno al entrar en pantalla
