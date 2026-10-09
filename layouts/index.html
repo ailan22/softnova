@@ -570,6 +570,7 @@
             class="sn-card grid gap-4 sm:grid-cols-2 md:col-span-3">
             <input type="hidden" name="_subject" value="Nuevo mensaje desde softnova.uy">
             <input type="hidden" name="_next" value="{{ "?enviado=1#contacto" | absURL }}">
+            <input type="hidden" name="_captcha" value="false">
             <input type="text" name="{{ $honeypot }}" class="hidden" tabindex="-1" autocomplete="off">
             <label class="flex flex-col gap-2 text-sm font-medium">
               Nombre
