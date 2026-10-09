@@ -10,8 +10,15 @@
     "run_worker_first": ["/api/*"]
   },
   "vars": {
-    "CONTACT_EMAIL": "softnova.contacto@gmail.com"
+    "CONTACT_EMAIL": "softnova.contacto@gmail.com",
+    "FROM_EMAIL": "formulario@softnova.uy"
   },
+  "send_email": [
+    {
+      "name": "SEND_EMAIL",
+      "destination_address": "softnova.contacto@gmail.com"
+    }
+  ],
   "observability": {
     "enabled": true
   }

@@ -1,6 +1,7 @@
 // Worker de SoftNova: sirve el sitio estático y recibe el formulario de contacto en /api/contacto.
-// El mensaje se reenvía a FormSubmit desde el servidor, así el navegador del visitante nunca
-// se conecta a formsubmit.co (algunos celulares y bloqueadores cortan esa conexión).
+// El mensaje se manda por correo con Cloudflare Email Routing (binding SEND_EMAIL), sin servicios externos.
+
+import { EmailMessage } from 'cloudflare:email';
 
 export default {
   async fetch(request, env) {
@@ -34,34 +35,63 @@ async function handleContact(request, env, url) {
   // Campo trampa: si un bot lo completa, se descarta sin avisarle
   if (form.get('_honey')) return reply(true, 'ok');
 
-  const nombre = String(form.get('nombre') || '').trim();
-  const email = String(form.get('email') || '').trim();
-  const mensaje = String(form.get('mensaje') || '').trim();
+  const field = (name, max) => String(form.get(name) || '').trim().slice(0, max);
+  const nombre = field('nombre', 200);
+  const telefono = field('telefono', 50);
+  const email = field('email', 200);
+  const mensaje = field('mensaje', 5000);
   if (!nombre || !email || !mensaje) return reply(false, 'Faltan datos');
 
-  const payload = new FormData();
-  payload.set('_subject', 'Nuevo mensaje desde softnova.uy');
-  payload.set('_captcha', 'false');
-  payload.set('_replyto', email);
-  payload.set('nombre', nombre);
-  payload.set('telefono', String(form.get('telefono') || '').trim());
-  payload.set('email', email);
-  payload.set('mensaje', mensaje);
+  const body = [
+    'Nuevo mensaje desde el formulario de softnova.uy',
+    '',
+    `Nombre: ${nombre}`,
+    `Teléfono: ${telefono || '-'}`,
+    `Correo: ${email}`,
+    '',
+    'Mensaje:',
+    mensaje,
+  ].join('\n');
+
+  // Solo se usa como Reply-To si es un correo válido (y sin saltos de línea que inyecten encabezados)
+  const replyTo = /^[^\s@<>,;"]+@[^\s@<>,;"]+\.[^\s@<>,;"]+$/.test(email) ? email : null;
+
+  const raw = buildMime({
+    from: `SoftNova Web <${env.FROM_EMAIL}>`,
+    to: env.CONTACT_EMAIL,
+    replyTo,
+    subject: `Nuevo mensaje de ${nombre.replace(/[\r\n]+/g, ' ')}`,
+    body,
+    domain: env.FROM_EMAIL.split('@')[1],
+  });
 
   try {
-    const res = await fetch(`https://formsubmit.co/ajax/${env.CONTACT_EMAIL}`, {
-      method: 'POST',
-      headers: { Accept: 'application/json', Referer: `${url.origin}/`, Origin: url.origin },
-      body: payload,
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || String(data.success) !== 'true') {
-      console.error('FormSubmit rechazó el mensaje', res.status, JSON.stringify(data));
-      return reply(false, data.message || 'No se pudo enviar');
-    }
+    await env.SEND_EMAIL.send(new EmailMessage(env.FROM_EMAIL, env.CONTACT_EMAIL, raw));
     return reply(true, 'ok');
   } catch (err) {
-    console.error('Error conectando con FormSubmit', err);
+    console.error('Error enviando el correo', err && err.message);
     return reply(false, 'No se pudo enviar');
   }
+}
+
+function buildMime({ from, to, replyTo, subject, body, domain }) {
+  const headers = [
+    `From: ${from}`,
+    `To: ${to}`,
+    replyTo && `Reply-To: ${replyTo}`,
+    `Subject: =?UTF-8?B?${base64(subject)}?=`,
+    `Date: ${new Date().toUTCString()}`,
+    `Message-ID: <${crypto.randomUUID()}@${domain}>`,
+    'MIME-Version: 1.0',
+    'Content-Type: text/plain; charset=UTF-8',
+    'Content-Transfer-Encoding: base64',
+  ].filter(Boolean);
+  const encodedBody = base64(body).replace(/.{76}/g, '$&\r\n');
+  return `${headers.join('\r\n')}\r\n\r\n${encodedBody}\r\n`;
+}
+
+function base64(text) {
+  let binary = '';
+  for (const byte of new TextEncoder().encode(text)) binary += String.fromCharCode(byte);
+  return btoa(binary);
 }
