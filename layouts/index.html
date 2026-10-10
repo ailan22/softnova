@@ -11,6 +11,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}">
   <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
   <meta name="theme-color" content="#061443">
+  <link rel="manifest" href="{{ "manifest.webmanifest" | relURL }}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Imagen y datos para compartir en redes -->
   {{ $title := printf "%s | Innovación digital" .Site.Title }}
@@ -707,6 +712,13 @@
           stepsObserver.disconnect();
         }, { threshold: 0.25 });
         stepsObserver.observe(steps);
+      }
+
+      // Permite instalar el sitio en el celular como app
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('{{ "sw.js" | relURL }}');
+        });
       }
     })();
   </script>
