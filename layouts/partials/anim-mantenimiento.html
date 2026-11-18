@@ -1,0 +1,408 @@
+<!-- Ilustración animada: velocidad, seguridad y mantenimiento (diapositiva del carrusel).
+     Secuencia: el medidor de velocidad sube a 98 → el escudo bloquea 3 amenazas →
+     la actualización llega al 100% → "Sitio protegido y actualizado".
+     Las animaciones arrancan desde cero cada vez que la diapositiva se activa (.is-active). -->
+<div class="sn-mt sn-slide-anim mx-auto w-full" aria-hidden="true">
+  <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sn-mt-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#2563eb" stop-opacity=".30" />
+        <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="sn-mt-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1fb6ff" />
+        <stop offset="100%" stop-color="#1d5cf2" />
+      </linearGradient>
+      <linearGradient id="sn-mt-speed" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#f59e0b" />
+        <stop offset="55%" stop-color="#84cc16" />
+        <stop offset="100%" stop-color="#22c55e" />
+      </linearGradient>
+    </defs>
+
+    <!-- Halo de fondo -->
+    <circle cx="230" cy="175" r="175" fill="url(#sn-mt-glow)" />
+
+    <!-- Ventana del panel -->
+    <g class="sn-mt-window">
+      <rect x="40" y="40" width="340" height="250" rx="14" fill="#0a1440" stroke="#1e40af" stroke-opacity=".8" />
+      <line x1="40" y1="72" x2="380" y2="72" stroke="#1e40af" stroke-opacity=".6" />
+      <circle cx="60" cy="56" r="4" fill="#ef4444" opacity=".8" />
+      <circle cx="76" cy="56" r="4" fill="#f59e0b" opacity=".8" />
+      <circle cx="92" cy="56" r="4" fill="#22c55e" opacity=".8" />
+      <rect x="120" y="49" width="190" height="14" rx="7" fill="#111d55" />
+      <text x="215" y="59" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8"
+        fill="#64748b">https://tunegocio.uy/panel</text>
+
+      <!-- Tarjeta: velocidad -->
+      <rect x="56" y="84" width="150" height="120" rx="10" fill="#13205e" />
+      <text x="68" y="101" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#e2e8f0">Velocidad</text>
+      <path d="M93 172a38 38 0 0 1 76 0" fill="none" stroke="#1e2a6b" stroke-width="8" stroke-linecap="round" />
+      <path class="sn-mt-arc" d="M93 172a38 38 0 0 1 76 0" fill="none" stroke="url(#sn-mt-speed)" stroke-width="8"
+        stroke-linecap="round" />
+      <g class="sn-mt-needle">
+        <path d="M131 172v-30" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+        <circle cx="131" cy="172" r="4.5" fill="#e2e8f0" />
+      </g>
+      <text class="sn-mt-score" x="131" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="12"
+        font-weight="800" fill="#4ade80">98<tspan font-size="8" font-weight="600" fill="#94a3b8"> / 100</tspan></text>
+
+      <!-- Tarjeta: seguridad -->
+      <rect x="214" y="84" width="150" height="120" rx="10" fill="#13205e" />
+      <text x="226" y="101" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#e2e8f0">Seguridad</text>
+      <circle class="sn-mt-ring" cx="289" cy="148" r="33" fill="none" stroke="#38bdf8" stroke-opacity=".5"
+        stroke-width="1.5" stroke-dasharray="6 6" />
+      <g class="sn-mt-shield">
+        <path d="M289 124 270 131.5v13c0 11.5 8 21 19 23.5 11-2.5 19-12 19-23.5v-13Z" fill="url(#sn-mt-grad)" />
+        <path d="m281 146 5.5 5.5 10.5-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </g>
+      <text class="sn-mt-blocked" x="289" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="8"
+        fill="#94a3b8"><tspan font-weight="800" fill="#4ade80">3</tspan> amenazas bloqueadas</text>
+
+      <!-- Tarjeta: actualizaciones -->
+      <rect x="56" y="212" width="308" height="64" rx="10" fill="#13205e" />
+      <text x="68" y="230" font-family="Inter, sans-serif" font-size="9" font-weight="700"
+        fill="#e2e8f0">Actualizaciones</text>
+      <text x="352" y="230" text-anchor="end" font-family="ui-monospace, monospace" font-size="8"
+        fill="#64748b">v2.4 → v2.5</text>
+      <rect x="68" y="238" width="284" height="8" rx="4" fill="#1e2a6b" />
+      <rect class="sn-mt-bar" x="68" y="238" width="284" height="8" rx="4" fill="url(#sn-mt-grad)" />
+      <text class="sn-mt-upd0" x="68" y="264" font-family="Inter, sans-serif" font-size="8.5"
+        fill="#94a3b8">Actualizando…</text>
+      <g class="sn-mt-upd1">
+        <circle cx="73" cy="261" r="5" fill="#22c55e" />
+        <path d="m70.5 261 1.8 1.8 3.4-3.6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <text x="83" y="264" font-family="Inter, sans-serif" font-size="8.5" font-weight="700" fill="#4ade80">Todo al
+          día</text>
+      </g>
+    </g>
+
+    <!-- Amenazas que rebotan en el escudo -->
+    <g class="sn-mt-bug" style="--d: 1.9s; --sx: 440px; --sy: 104px; --ex: 316px; --ey: 138px;">
+      <path d="M-8-5-4-2M8-5 4-2M-9 1h4M9 1H5M-8 7l4-3M8 7 4 4" stroke="#fca5a5" stroke-width="1.5"
+        stroke-linecap="round" />
+      <ellipse rx="5.5" ry="7" fill="#ef4444" />
+    </g>
+    <g class="sn-mt-bug" style="--d: 2.3s; --sx: 452px; --sy: 168px; --ex: 318px; --ey: 152px;">
+      <path d="M-8-5-4-2M8-5 4-2M-9 1h4M9 1H5M-8 7l4-3M8 7 4 4" stroke="#fca5a5" stroke-width="1.5"
+        stroke-linecap="round" />
+      <ellipse rx="5.5" ry="7" fill="#ef4444" />
+    </g>
+    <g class="sn-mt-bug" style="--d: 2.7s; --sx: 430px; --sy: 222px; --ex: 314px; --ey: 166px;">
+      <path d="M-8-5-4-2M8-5 4-2M-9 1h4M9 1H5M-8 7l4-3M8 7 4 4" stroke="#fca5a5" stroke-width="1.5"
+        stroke-linecap="round" />
+      <ellipse rx="5.5" ry="7" fill="#ef4444" />
+    </g>
+    <circle class="sn-mt-burst" cx="316" cy="138" r="10" style="--d: 2.45s;" />
+    <circle class="sn-mt-burst" cx="318" cy="152" r="10" style="--d: 2.85s;" />
+    <circle class="sn-mt-burst" cx="314" cy="166" r="10" style="--d: 3.25s;" />
+
+    <!-- Confirmación -->
+    <g class="sn-mt-toast">
+      <rect x="236" y="290" width="200" height="50" rx="12" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".7" />
+      <circle cx="260" cy="315" r="12" fill="#22c55e" />
+      <path d="m254 315 4 4 8-8" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <text x="282" y="311" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Sitio
+        protegido y al día</text>
+      <text x="282" y="326" font-family="Inter, sans-serif" font-size="8.5" fill="#94a3b8">Última revisión: hoy</text>
+    </g>
+
+    <!-- Copia de seguridad -->
+    <g class="sn-mt-badge">
+      <rect x="340" y="0" width="110" height="34" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
+      <g fill="none" stroke="#4ade80" stroke-width="1.6">
+        <ellipse cx="358" cy="11" rx="7" ry="2.5" />
+        <path d="M351 11v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V11M351 17c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5" />
+      </g>
+      <text x="372" y="21" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">Backup listo</text>
+    </g>
+
+    <!-- Etiquetas flotantes -->
+    <g class="sn-mt-bob" style="--d: 0s;">
+      <rect x="-6" y="0" width="122" height="34" rx="10" fill="#0f1d5c" stroke="#3b82f6" stroke-opacity=".8" />
+      <circle class="sn-mt-dot" cx="8" cy="17" r="3.5" fill="#22c55e" />
+      <path class="sn-mt-pulse" d="M16 17h8l3-7 4 14 3-7h6" fill="none" stroke="#4ade80" stroke-width="1.6"
+        stroke-linecap="round" stroke-linejoin="round" />
+      <text x="48" y="20" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">99,9% online</text>
+    </g>
+    <g class="sn-mt-bob" style="--d: -2.5s;">
+      <rect x="8" y="300" width="112" height="38" rx="10" fill="#0f1d5c" stroke="#8b5cf6" stroke-opacity=".7" />
+      <path d="M26 317v-3a6 6 0 0 1 12 0v3" fill="none" stroke="#a78bfa" stroke-width="2" />
+      <rect x="23" y="317" width="18" height="13" rx="3" fill="#a78bfa" />
+      <circle cx="32" cy="323.5" r="1.8" fill="#0f1d5c" />
+      <text x="50" y="323" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">SSL activo</text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .sn-mt {
+    max-width: 520px;
+  }
+
+  .sn-mt svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sn-mt-window {
+    filter: drop-shadow(0 0 28px rgba(37, 99, 235, .35));
+  }
+
+  .sn-mt-score,
+  .sn-mt-blocked,
+  .sn-mt-upd1,
+  .sn-mt-bug,
+  .sn-mt-burst,
+  .sn-mt-toast,
+  .sn-mt-badge {
+    opacity: 0;
+  }
+
+  .sn-mt-score,
+  .sn-mt-blocked,
+  .sn-mt-shield,
+  .sn-mt-burst,
+  .sn-mt-toast,
+  .sn-mt-badge,
+  .sn-mt-ring,
+  .sn-mt-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* Arco del medidor: 119.4 = medio círculo de radio 38 */
+  .sn-mt-arc {
+    stroke-dasharray: 119.4;
+    stroke-dashoffset: 119.4;
+  }
+
+  .sn-mt-needle {
+    transform-box: view-box;
+    transform-origin: 131px 172px;
+    transform: rotate(-90deg);
+  }
+
+  .sn-mt-bar {
+    transform-box: fill-box;
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  .sn-mt-burst {
+    fill: none;
+    stroke: #38bdf8;
+    stroke-width: 2;
+  }
+
+  .sn-mt-pulse {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: sn-mt-pulse 2s linear infinite;
+  }
+
+  .sn-mt-dot {
+    animation: sn-mt-dot 2s ease-in-out infinite;
+  }
+
+  .sn-mt-ring {
+    animation: sn-mt-spin 8s linear infinite;
+  }
+
+  .sn-mt-bob {
+    animation: sn-mt-bob 5s ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+
+  /* Todo corre en un ciclo de 6.5s, lo que dura cada diapositiva */
+  .is-active .sn-mt-window {
+    animation: sn-mt-float 7s ease-in-out infinite;
+  }
+
+  .is-active .sn-mt-arc {
+    animation: sn-mt-arc 6.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .is-active .sn-mt-needle {
+    animation: sn-mt-needle 6.5s cubic-bezier(0.34, 1.3, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mt-score {
+    animation: sn-mt-score 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mt-bug {
+    animation: sn-mt-bug 6.5s ease-in infinite;
+    animation-delay: var(--d);
+  }
+
+  .is-active .sn-mt-burst {
+    animation: sn-mt-burst 6.5s ease-out infinite;
+    animation-delay: var(--d);
+  }
+
+  .is-active .sn-mt-shield {
+    animation: sn-mt-shield 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-mt-blocked {
+    animation: sn-mt-blocked 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mt-bar {
+    animation: sn-mt-bar 6.5s ease-in-out infinite;
+  }
+
+  .is-active .sn-mt-upd0 {
+    animation: sn-mt-upd0 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-mt-upd1 {
+    animation: sn-mt-upd1 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mt-toast {
+    animation: sn-mt-toast 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mt-badge {
+    animation: sn-mt-badge 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  @keyframes sn-mt-float {
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes sn-mt-bob {
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes sn-mt-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes sn-mt-pulse {
+    0%   { stroke-dashoffset: 48; }
+    60%, 100% { stroke-dashoffset: 0; }
+  }
+
+  @keyframes sn-mt-dot {
+    50% { transform: scale(1.4); opacity: .6; }
+  }
+
+  /* Medidor de velocidad: sube hasta 98 */
+  @keyframes sn-mt-arc {
+    0%, 4%   { stroke-dashoffset: 119.4; }
+    24%, 93% { stroke-dashoffset: 2.4; }
+    98%, 100% { stroke-dashoffset: 119.4; }
+  }
+
+  @keyframes sn-mt-needle {
+    0%, 4%   { transform: rotate(-90deg); }
+    24%, 93% { transform: rotate(86deg); }
+    98%, 100% { transform: rotate(-90deg); }
+  }
+
+  @keyframes sn-mt-score {
+    0%, 20%  { opacity: 0; transform: scale(.5); }
+    26%, 93% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; }
+  }
+
+  /* Cada amenaza vuela hacia el escudo y se desintegra */
+  @keyframes sn-mt-bug {
+    0%   { opacity: 0; transform: translate(var(--sx), var(--sy)) rotate(-90deg); }
+    2%   { opacity: 1; }
+    8.5% { opacity: 1; transform: translate(var(--ex), var(--ey)) rotate(-90deg) scale(1); }
+    10%  { opacity: 0; transform: translate(var(--ex), var(--ey)) rotate(-90deg) scale(1.8); }
+    100% { opacity: 0; transform: translate(var(--ex), var(--ey)) scale(0); }
+  }
+
+  @keyframes sn-mt-burst {
+    0%   { opacity: .9; transform: scale(.3); }
+    7%   { opacity: 0; transform: scale(1.8); }
+    100% { opacity: 0; transform: scale(1.8); }
+  }
+
+  @keyframes sn-mt-shield {
+    0%, 36%, 40%, 42%, 46%, 48%, 52%, 100% { transform: none; filter: none; }
+    38%, 44%, 50% { transform: scale(1.12); filter: drop-shadow(0 0 8px #38bdf8); }
+  }
+
+  @keyframes sn-mt-blocked {
+    0%, 50%  { opacity: 0; transform: translateY(6px); }
+    55%, 93% { opacity: 1; transform: none; }
+    97%, 100% { opacity: 0; }
+  }
+
+  /* Barra de actualización */
+  @keyframes sn-mt-bar {
+    0%, 50%  { transform: scaleX(0); }
+    66%, 93% { transform: scaleX(1); }
+    98%, 100% { transform: scaleX(0); }
+  }
+
+  @keyframes sn-mt-upd0 {
+    0%, 65%  { opacity: 1; }
+    67%, 95% { opacity: 0; }
+    98%, 100% { opacity: 1; }
+  }
+
+  @keyframes sn-mt-upd1 {
+    0%, 66%  { opacity: 0; transform: translateX(-6px); }
+    70%, 93% { opacity: 1; transform: none; }
+    97%, 100% { opacity: 0; }
+  }
+
+  @keyframes sn-mt-toast {
+    0%, 69%  { opacity: 0; transform: translateY(16px) scale(.9); }
+    75%, 93% { opacity: 1; transform: none; }
+    97%, 100% { opacity: 0; transform: translateY(8px); }
+  }
+
+  @keyframes sn-mt-badge {
+    0%, 74%  { opacity: 0; transform: scale(.5); }
+    80%, 93% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; transform: scale(.8); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sn-mt * {
+      animation: none !important;
+    }
+
+    .sn-mt-arc {
+      stroke-dashoffset: 2.4;
+    }
+
+    .sn-mt-needle {
+      transform: rotate(86deg);
+    }
+
+    .sn-mt-bar {
+      transform: none;
+    }
+
+    .sn-mt-pulse {
+      stroke-dashoffset: 0;
+    }
+
+    .sn-mt-upd0 {
+      opacity: 0;
+    }
+
+    .sn-mt-score,
+    .sn-mt-blocked,
+    .sn-mt-upd1,
+    .sn-mt-toast,
+    .sn-mt-badge {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

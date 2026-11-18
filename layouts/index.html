@@ -105,167 +105,19 @@
           <!--<div class="sn-outline-diamond hidden sm:block" style="width: 220px; height: 220px; left: -60px; top: 50%; margin-top: -110px;"></div>-->
           {{ if fileExists "static/images/image_construction.png" }}
           <!-- Ilustración animada: desarrollo web (SoftNova) -->
-          <div class="sn-anim" aria-hidden="true">
-            <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="sn-glow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#2563eb" stop-opacity=".30" />
-                  <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
-                </radialGradient>
-                <linearGradient id="sn-hero" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#2563eb" />
-                  <stop offset="100%" stop-color="#1e3a8a" />
-                </linearGradient>
-              </defs>
-
-              <!-- Halo de fondo -->
-              <circle cx="230" cy="175" r="175" fill="url(#sn-glow)" />
-
-              <!-- Ventana del navegador -->
-              <g class="sn-window">
-                <rect x="50" y="50" width="330" height="245" rx="14" fill="#0a1440" stroke="#1e40af"
-                  stroke-opacity=".8" />
-                <line x1="50" y1="82" x2="380" y2="82" stroke="#1e40af" stroke-opacity=".6" />
-                <circle cx="70" cy="66" r="4" fill="#ef4444" opacity=".8" />
-                <circle cx="86" cy="66" r="4" fill="#f59e0b" opacity=".8" />
-                <circle cx="102" cy="66" r="4" fill="#22c55e" opacity=".8" />
-                <rect x="125" y="59" width="180" height="14" rx="7" fill="#111d55" />
-                <text x="215" y="69" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8"
-                  fill="#64748b">https://www.softnova.uy</text>
-                <line x1="205" y1="82" x2="205" y2="295" stroke="#1e40af" stroke-opacity=".4" />
-
-                <!-- Código que se va escribiendo -->
-                <g class="sn-line" style="--d:0s">
-                  <rect x="66" y="98" width="10" height="6" rx="3" fill="#f472b6" />
-                  <rect x="80" y="98" width="34" height="6" rx="3" fill="#60a5fa" />
-                  <rect x="118" y="98" width="22" height="6" rx="3" fill="#38bdf8" />
-                </g>
-                <g class="sn-line" style="--d:.25s">
-                  <rect x="78" y="112" width="10" height="6" rx="3" fill="#f472b6" />
-                  <rect x="92" y="112" width="24" height="6" rx="3" fill="#60a5fa" />
-                  <rect x="120" y="112" width="40" height="6" rx="3" fill="#4ade80" />
-                </g>
-                <g class="sn-line" style="--d:.5s">
-                  <rect x="90" y="126" width="46" height="6" rx="3" fill="#94a3b8" />
-                  <rect x="140" y="126" width="20" height="6" rx="3" fill="#fbbf24" />
-                </g>
-                <g class="sn-line" style="--d:.75s">
-                  <rect x="90" y="140" width="30" height="6" rx="3" fill="#a78bfa" />
-                  <rect x="124" y="140" width="36" height="6" rx="3" fill="#94a3b8" />
-                </g>
-                <g class="sn-line" style="--d:1s">
-                  <rect x="78" y="154" width="10" height="6" rx="3" fill="#f472b6" />
-                  <rect x="92" y="154" width="24" height="6" rx="3" fill="#60a5fa" />
-                </g>
-                <g class="sn-line" style="--d:1.25s">
-                  <rect x="78" y="168" width="10" height="6" rx="3" fill="#f472b6" />
-                  <rect x="92" y="168" width="20" height="6" rx="3" fill="#60a5fa" />
-                  <rect x="116" y="168" width="30" height="6" rx="3" fill="#4ade80" />
-                </g>
-                <g class="sn-line" style="--d:1.5s">
-                  <rect x="90" y="182" width="56" height="6" rx="3" fill="#94a3b8" />
-                </g>
-                <g class="sn-line" style="--d:1.75s">
-                  <rect x="90" y="196" width="22" height="6" rx="3" fill="#fbbf24" />
-                  <rect x="116" y="196" width="28" height="6" rx="3" fill="#94a3b8" />
-                </g>
-                <g class="sn-line" style="--d:2s">
-                  <rect x="78" y="210" width="10" height="6" rx="3" fill="#f472b6" />
-                  <rect x="92" y="210" width="20" height="6" rx="3" fill="#60a5fa" />
-                </g>
-                <g class="sn-line" style="--d:2.25s">
-                  <rect x="66" y="224" width="10" height="6" rx="3" fill="#f472b6" />
-                  <rect x="80" y="224" width="34" height="6" rx="3" fill="#60a5fa" />
-                </g>
-                <rect class="sn-blink" x="118" y="222" width="2" height="10" fill="#38bdf8" />
-
-                <!-- Página que se va construyendo -->
-                <g class="sn-pop" style="--d:.4s">
-                  <rect x="215" y="94" width="150" height="12" rx="3" fill="#13205e" />
-                  <circle cx="223" cy="100" r="3" fill="#38bdf8" />
-                  <rect x="318" y="98" width="12" height="4" rx="2" fill="#475569" />
-                  <rect x="334" y="98" width="12" height="4" rx="2" fill="#475569" />
-                  <rect x="350" y="98" width="10" height="4" rx="2" fill="#3b82f6" />
-                </g>
-                <g class="sn-pop" style="--d:1.2s">
-                  <rect x="215" y="114" width="150" height="58" rx="6" fill="url(#sn-hero)" />
-                  <rect x="225" y="127" width="80" height="7" rx="3" fill="#fff" opacity=".9" />
-                  <rect x="225" y="140" width="60" height="5" rx="2.5" fill="#fff" opacity=".55" />
-                  <rect x="225" y="153" width="36" height="10" rx="5" fill="#0b1650" />
-                </g>
-                <g class="sn-pop" style="--d:2s">
-                  <rect x="215" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
-                  <circle cx="227" cy="193" r="5" fill="#3b82f6" />
-                  <rect x="221" y="204" width="32" height="4" rx="2" fill="#475569" />
-                  <rect x="221" y="212" width="22" height="4" rx="2" fill="#334155" />
-                </g>
-                <g class="sn-pop" style="--d:2.3s">
-                  <rect x="267" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
-                  <circle cx="279" cy="193" r="5" fill="#3b82f6" />
-                  <rect x="273" y="204" width="32" height="4" rx="2" fill="#475569" />
-                  <rect x="273" y="212" width="22" height="4" rx="2" fill="#334155" />
-                </g>
-                <g class="sn-pop" style="--d:2.6s">
-                  <rect x="319" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
-                  <circle cx="331" cy="193" r="5" fill="#3b82f6" />
-                  <rect x="325" y="204" width="32" height="4" rx="2" fill="#475569" />
-                  <rect x="325" y="212" width="22" height="4" rx="2" fill="#334155" />
-                </g>
-                <g class="sn-pop" style="--d:3s">
-                  <rect x="215" y="234" width="150" height="5" rx="2.5" fill="#1e2a6b" />
-                  <rect x="215" y="245" width="110" height="5" rx="2.5" fill="#1e2a6b" />
-                </g>
-                <g class="sn-pop" style="--d:3.4s">
-                  <circle cx="219" cy="274" r="3.5" fill="#22c55e" />
-                  <text x="228" y="277" font-family="ui-monospace, monospace" font-size="8" fill="#4ade80">Build
-                    exitoso</text>
-                </g>
-              </g>
-
-              <!-- Etiquetas flotantes -->
-              <g class="sn-bob" style="--d:0s">
-                <rect x="340" y="22" width="64" height="34" rx="10" fill="#0f1d5c" stroke="#3b82f6"
-                  stroke-opacity=".8" />
-                <text x="372" y="45" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15"
-                  font-weight="700" fill="#60a5fa">&lt;/&gt;</text>
-              </g>
-              <g class="sn-bob" style="--d:-2.5s">
-                <rect x="16" y="250" width="68" height="34" rx="10" fill="#0f1d5c" stroke="#8b5cf6"
-                  stroke-opacity=".7" />
-                <text x="50" y="273" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15"
-                  font-weight="700" fill="#a78bfa">{ }</text>
-              </g>
-              <g class="sn-bob" style="--d:-1.2s">
-                <rect x="318" y="302" width="124" height="42" rx="10" fill="#0f1d5c" stroke="#22c55e"
-                  stroke-opacity=".6" />
-                <circle cx="340" cy="323" r="12" fill="none" stroke="#14532d" stroke-width="3" />
-                <circle class="sn-gauge" cx="340" cy="323" r="12" fill="none" stroke="#22c55e" stroke-width="3"
-                  stroke-linecap="round" />
-                <text x="340" y="326" text-anchor="middle" font-family="Inter, sans-serif" font-size="8"
-                  font-weight="700" fill="#e2e8f0">100</text>
-                <text x="360" y="326" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">Rendimiento</text>
-              </g>
-              <g class="sn-bob" style="--d:-3.6s">
-                <rect x="190" y="300" width="100" height="42" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
-                <circle cx="220" cy="320" r="12" fill="none" stroke="#14532d" stroke-width="3" />
-                <circle class="sn-gauge" cx="220" cy="320" r="12" fill="none" stroke="#22c55e" stroke-width="3"
-                  stroke-linecap="round" />
-                <text x="220" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="700"
-                  fill="#e2e8f0">100</text>
-                <text x="240" y="325" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">SEO</text>
-              </g>
-              <g class="sn-bob" style="--d:-2.5s">
-                <rect x="40" y="300" width="120" height="42" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
-                <circle cx="65" cy="320" r="12" fill="none" stroke="#14532d" stroke-width="3" />
-                <circle class="sn-gauge" cx="65" cy="320" r="12" fill="none" stroke="#22c55e" stroke-width="3"
-                  stroke-linecap="round" />
-                <text x="65" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="700"
-                  fill="#e2e8f0">100</text>
-                <text x="90" y="325" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">Accesibilidad</text>
-              </g>
-            </svg>
+          <div class="relative mx-auto w-full max-w-lg">
+            <!-- Laptop: Byte, la mascota, vive dentro de la pantalla y sale a acompañar al usuario al bajar
+                 (#sn-byte-anchor es su "lugar"; byte.html lo mueve a una esquina fija) -->
+            <div class="">
+              <span class="sn-byte-screen-glow" aria-hidden="true"></span>
+              <!-- Se ve solo cuando Byte salió a recorrer el sitio -->
+              <p class="sn-byte-screen-away" aria-hidden="true">Byte está recorriendo el sitio<span>_</span></p>
+              <div id="sn-byte-anchor" class="sn-byte-home">
+                {{ partial "byte.html" . }}
+              </div>
+            </div>
+            <div class=""></div>
           </div>
-
           <style>
             .sn-anim {
               width: 100%;
@@ -408,7 +260,94 @@
           {{ partial "code-editor.html" (dict "class" "") }}
           {{ end }}
         </div>
+      </div>
+    </section>
 
+    <!-- Carrusel -->
+    <section id="destacados" class="py-12 lg:py-16" aria-roledescription="carrusel" aria-label="Destacados">
+      <div class="sn-container">
+        {{ $slides := slice
+        (dict "eyebrow" "Reservas online" "title" "Sistemas de reservas" "text" "Permití que tus clientes agenden citas y servicios directamente desde tu página web. Gestioná horarios disponibles, reservas y datos de clientes de forma sencilla y organizada." "anim" "reservas" "image" "Reserva_en_calendario" "alt" "Persona reservando un turno en un calendario online" "icon" `
+        <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+        <path stroke-linecap="round" d="M3.5 10h17M8 3v4M16 3v4" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="m9 15 2 2 4-4" />`)
+        (dict "eyebrow" "Comercio electrónico" "title" "Tiendas online" "text" "Llevá tus productos a Internet con una tienda online personalizada. Mostrá tu catálogo, recibí pedidos y facilitá el proceso de compra para tus clientes." "anim" "tienda" "image" "tienda_online" "alt" "Tienda online en una laptop con carrito de compras" "icon" `
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2" />
+        <circle cx="9.5" cy="20" r="1.3" />
+        <circle cx="17" cy="20" r="1.3" />`)
+        (dict "eyebrow" "Menús con QR" "title" "Sistemas de pedidos y menús digitales" "text" "Simplificá la gestión de pedidos mediante catálogos digitales y menús con códigos QR. Tus clientes podrán consultar productos y realizar pedidos desde sus propios dispositivos." "anim" "menu" "image" "codigo_qr" "alt" "Menú digital en un celular junto a un cartel con código QR" "icon" `
+        <rect x="3.5" y="3.5" width="6" height="6" rx="1" />
+        <rect x="14.5" y="3.5" width="6" height="6" rx="1" />
+        <rect x="3.5" y="14.5" width="6" height="6" rx="1" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M14.5 14.5h2.5v2.5M20.5 14.5v.01M14.5 20.5h.01M17.5 20.5h3v-3" />`)
+        (dict "eyebrow" "Tranquilidad" "title" "Rápido, seguro y siempre al día" "text" "Nos encargamos del mantenimiento y la seguridad para que vos te enfoques en lo que mejor sabés hacer." "anim" "mantenimiento" "icon" `
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.8 12 2.2 2.2 4.2-4.4" />`)
+        }}
+        <div class="sn-carousel" data-interval="6500">
+          <div class="sn-carousel-track">
+            {{ range $i, $s := $slides }}
+            <div class="sn-slide" role="group" aria-roledescription="diapositiva"
+              aria-label="{{ add $i 1 }} de {{ len $slides }}" {{ if $i }}aria-hidden="true"{{ end }}>
+              <div class="grid items-center gap-8 px-6 py-10 sm:px-12 sm:py-14 lg:px-16 {{ if or $s.anim $s.image }}md:grid-cols-2{{ else }}md:grid-cols-[1fr_auto]{{ end }}">
+                <div class="max-w-xl">
+                  <div class="sn-anim-in flex items-center gap-3" style="--d: 0s;">
+                    <span class="sn-slide-badge" aria-hidden="true">
+                      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{{
+                        $s.icon | safeHTML }}</svg>
+                    </span>
+                    <p class="sn-eyebrow">{{ $s.eyebrow }}</p>
+                  </div>
+                  <!-- Título con efecto máquina de escribir: el "fantasma" reserva el espacio y lo leen los lectores de pantalla -->
+                  <h2 class="sn-title sn-type mt-3">
+                    <span class="sn-type-ghost">{{ $s.title }}</span>
+                    <span class="sn-type-text" aria-hidden="true" data-text="{{ $s.title }}">{{ $s.title }}</span>
+                  </h2>
+                  <p class="sn-anim-in sn-muted mt-4 leading-relaxed" style="--d: 0.25s;">{{ $s.text }}</p>
+                  <div class="sn-anim-in" style="--d: 0.45s;">
+                    <a href="#contacto" class="sn-btn mt-8" {{ if $i }}tabindex="-1"{{ end }}>Quiero mi web</a>
+                  </div>
+                </div>
+                {{ if $s.anim }}
+                {{ partial (printf "anim-%s.html" $s.anim) . }}
+                {{ else if $s.image }}
+                {{ $img := imageConfig (printf "static/images/%s.png" $s.image) }}
+                <!-- Nunca se agranda más que su tamaño real para que no se vea pixelada -->
+                <picture class="sn-slide-image mx-auto w-full" style="max-width: {{ $img.Width }}px;">
+                  <source srcset="{{ printf "images/%s.webp" $s.image | relURL }}" type="image/webp">
+                  <img src="{{ printf "images/%s.png" $s.image | relURL }}" alt="{{ $s.alt }}"
+                    width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy" decoding="async">
+                </picture>
+                {{ else }}
+                <div class="sn-slide-icon hidden md:flex">
+                  <svg class="h-20 w-20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{{
+                    $s.icon | safeHTML }}</svg>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+            {{ end }}
+          </div>
+
+          <button type="button" class="sn-carousel-arrow left-3" data-dir="-1" aria-label="Anterior">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <button type="button" class="sn-carousel-arrow right-3" data-dir="1" aria-label="Siguiente">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+
+          <div class="sn-carousel-dots">
+            {{ range $i, $s := $slides }}
+            <button type="button" class="sn-dot{{ if not $i }} is-active{{ end }}" data-index="{{ $i }}"
+              aria-label="Ir a la diapositiva {{ add $i 1 }}"></button>
+            {{ end }}
+          </div>
+        </div>
       </div>
     </section>
 
@@ -493,18 +432,310 @@
     <!-- Nosotros -->
     <section id="nosotros" class="scroll-mt-20 py-16 lg:py-20">
       <div class="sn-container grid items-center gap-14 lg:grid-cols-2">
-        <div class="relative mx-auto w-full max-w-lg pb-6 pr-10 sm:pr-16">
-          <div class="sn-laptop-screen aspect-[16/10]">
-            {{ partial "code-editor.html" (dict "class" "sn-editor-screen p-3 text-[7px] leading-[1.5] sm:text-[9px]")
-            }}
+        <div class="relative">
+          <!--<div class="sn-outline-diamond hidden sm:block" style="width: 220px; height: 220px; left: -60px; top: 50%; margin-top: -110px;"></div>-->
+          {{ if fileExists "static/images/image_construction.png" }}
+          <!-- Ilustración animada: desarrollo web (SoftNova) -->
+          <div class="sn-anim" aria-hidden="true">
+            <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sn-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#2563eb" stop-opacity=".30" />
+                  <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="sn-hero" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#2563eb" />
+                  <stop offset="100%" stop-color="#1e3a8a" />
+                </linearGradient>
+              </defs>
+        
+              <!-- Halo de fondo -->
+              <circle cx="230" cy="175" r="175" fill="url(#sn-glow)" />
+        
+              <!-- Ventana del navegador -->
+              <g class="sn-window">
+                <rect x="50" y="50" width="330" height="245" rx="14" fill="#0a1440" stroke="#1e40af" stroke-opacity=".8" />
+                <line x1="50" y1="82" x2="380" y2="82" stroke="#1e40af" stroke-opacity=".6" />
+                <circle cx="70" cy="66" r="4" fill="#ef4444" opacity=".8" />
+                <circle cx="86" cy="66" r="4" fill="#f59e0b" opacity=".8" />
+                <circle cx="102" cy="66" r="4" fill="#22c55e" opacity=".8" />
+                <rect x="125" y="59" width="180" height="14" rx="7" fill="#111d55" />
+                <text x="215" y="69" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8"
+                  fill="#64748b">https://www.softnova.uy</text>
+                <line x1="205" y1="82" x2="205" y2="295" stroke="#1e40af" stroke-opacity=".4" />
+        
+                <!-- Código que se va escribiendo -->
+                <g class="sn-line" style="--d:0s">
+                  <rect x="66" y="98" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="80" y="98" width="34" height="6" rx="3" fill="#60a5fa" />
+                  <rect x="118" y="98" width="22" height="6" rx="3" fill="#38bdf8" />
+                </g>
+                <g class="sn-line" style="--d:.25s">
+                  <rect x="78" y="112" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="112" width="24" height="6" rx="3" fill="#60a5fa" />
+                  <rect x="120" y="112" width="40" height="6" rx="3" fill="#4ade80" />
+                </g>
+                <g class="sn-line" style="--d:.5s">
+                  <rect x="90" y="126" width="46" height="6" rx="3" fill="#94a3b8" />
+                  <rect x="140" y="126" width="20" height="6" rx="3" fill="#fbbf24" />
+                </g>
+                <g class="sn-line" style="--d:.75s">
+                  <rect x="90" y="140" width="30" height="6" rx="3" fill="#a78bfa" />
+                  <rect x="124" y="140" width="36" height="6" rx="3" fill="#94a3b8" />
+                </g>
+                <g class="sn-line" style="--d:1s">
+                  <rect x="78" y="154" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="154" width="24" height="6" rx="3" fill="#60a5fa" />
+                </g>
+                <g class="sn-line" style="--d:1.25s">
+                  <rect x="78" y="168" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="168" width="20" height="6" rx="3" fill="#60a5fa" />
+                  <rect x="116" y="168" width="30" height="6" rx="3" fill="#4ade80" />
+                </g>
+                <g class="sn-line" style="--d:1.5s">
+                  <rect x="90" y="182" width="56" height="6" rx="3" fill="#94a3b8" />
+                </g>
+                <g class="sn-line" style="--d:1.75s">
+                  <rect x="90" y="196" width="22" height="6" rx="3" fill="#fbbf24" />
+                  <rect x="116" y="196" width="28" height="6" rx="3" fill="#94a3b8" />
+                </g>
+                <g class="sn-line" style="--d:2s">
+                  <rect x="78" y="210" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="92" y="210" width="20" height="6" rx="3" fill="#60a5fa" />
+                </g>
+                <g class="sn-line" style="--d:2.25s">
+                  <rect x="66" y="224" width="10" height="6" rx="3" fill="#f472b6" />
+                  <rect x="80" y="224" width="34" height="6" rx="3" fill="#60a5fa" />
+                </g>
+                <rect class="sn-blink" x="118" y="222" width="2" height="10" fill="#38bdf8" />
+        
+                <!-- Página que se va construyendo -->
+                <g class="sn-pop" style="--d:.4s">
+                  <rect x="215" y="94" width="150" height="12" rx="3" fill="#13205e" />
+                  <circle cx="223" cy="100" r="3" fill="#38bdf8" />
+                  <rect x="318" y="98" width="12" height="4" rx="2" fill="#475569" />
+                  <rect x="334" y="98" width="12" height="4" rx="2" fill="#475569" />
+                  <rect x="350" y="98" width="10" height="4" rx="2" fill="#3b82f6" />
+                </g>
+                <g class="sn-pop" style="--d:1.2s">
+                  <rect x="215" y="114" width="150" height="58" rx="6" fill="url(#sn-hero)" />
+                  <rect x="225" y="127" width="80" height="7" rx="3" fill="#fff" opacity=".9" />
+                  <rect x="225" y="140" width="60" height="5" rx="2.5" fill="#fff" opacity=".55" />
+                  <rect x="225" y="153" width="36" height="10" rx="5" fill="#0b1650" />
+                </g>
+                <g class="sn-pop" style="--d:2s">
+                  <rect x="215" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
+                  <circle cx="227" cy="193" r="5" fill="#3b82f6" />
+                  <rect x="221" y="204" width="32" height="4" rx="2" fill="#475569" />
+                  <rect x="221" y="212" width="22" height="4" rx="2" fill="#334155" />
+                </g>
+                <g class="sn-pop" style="--d:2.3s">
+                  <rect x="267" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
+                  <circle cx="279" cy="193" r="5" fill="#3b82f6" />
+                  <rect x="273" y="204" width="32" height="4" rx="2" fill="#475569" />
+                  <rect x="273" y="212" width="22" height="4" rx="2" fill="#334155" />
+                </g>
+                <g class="sn-pop" style="--d:2.6s">
+                  <rect x="319" y="180" width="46" height="44" rx="5" fill="#13205e" stroke="#1e40af" />
+                  <circle cx="331" cy="193" r="5" fill="#3b82f6" />
+                  <rect x="325" y="204" width="32" height="4" rx="2" fill="#475569" />
+                  <rect x="325" y="212" width="22" height="4" rx="2" fill="#334155" />
+                </g>
+                <g class="sn-pop" style="--d:3s">
+                  <rect x="215" y="234" width="150" height="5" rx="2.5" fill="#1e2a6b" />
+                  <rect x="215" y="245" width="110" height="5" rx="2.5" fill="#1e2a6b" />
+                </g>
+                <g class="sn-pop" style="--d:3.4s">
+                  <circle cx="219" cy="274" r="3.5" fill="#22c55e" />
+                  <text x="228" y="277" font-family="ui-monospace, monospace" font-size="8" fill="#4ade80">Build
+                    exitoso</text>
+                </g>
+              </g>
+        
+              <!-- Etiquetas flotantes -->
+              <g class="sn-bob" style="--d:0s">
+                <rect x="340" y="22" width="64" height="34" rx="10" fill="#0f1d5c" stroke="#3b82f6" stroke-opacity=".8" />
+                <text x="372" y="45" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="700"
+                  fill="#60a5fa">&lt;/&gt;</text>
+              </g>
+              <g class="sn-bob" style="--d:-2.5s">
+                <rect x="16" y="250" width="68" height="34" rx="10" fill="#0f1d5c" stroke="#8b5cf6" stroke-opacity=".7" />
+                <text x="50" y="273" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="700"
+                  fill="#a78bfa">{ }</text>
+              </g>
+              <g class="sn-bob" style="--d:-1.2s">
+                <rect x="318" y="302" width="124" height="42" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
+                <circle cx="340" cy="323" r="12" fill="none" stroke="#14532d" stroke-width="3" />
+                <circle class="sn-gauge" cx="340" cy="323" r="12" fill="none" stroke="#22c55e" stroke-width="3"
+                  stroke-linecap="round" />
+                <text x="340" y="326" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="700"
+                  fill="#e2e8f0">100</text>
+                <text x="360" y="326" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">Rendimiento</text>
+              </g>
+              <g class="sn-bob" style="--d:-3.6s">
+                <rect x="190" y="300" width="100" height="42" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
+                <circle cx="220" cy="320" r="12" fill="none" stroke="#14532d" stroke-width="3" />
+                <circle class="sn-gauge" cx="220" cy="320" r="12" fill="none" stroke="#22c55e" stroke-width="3"
+                  stroke-linecap="round" />
+                <text x="220" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="700"
+                  fill="#e2e8f0">100</text>
+                <text x="240" y="325" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">SEO</text>
+              </g>
+              <g class="sn-bob" style="--d:-2.5s">
+                <rect x="40" y="300" width="120" height="42" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
+                <circle cx="65" cy="320" r="12" fill="none" stroke="#14532d" stroke-width="3" />
+                <circle class="sn-gauge" cx="65" cy="320" r="12" fill="none" stroke="#22c55e" stroke-width="3"
+                  stroke-linecap="round" />
+                <text x="65" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="700"
+                  fill="#e2e8f0">100</text>
+                <text x="90" y="325" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">Accesibilidad</text>
+              </g>
+            </svg>
           </div>
-          <div class="sn-laptop-base"></div>
-          <div class="sn-phone bottom-0 right-0 w-[26%] sm:w-[24%]" style="aspect-ratio: 9/18;">
-            {{ partial "code-editor.html" (dict "class" "sn-editor-screen px-1.5 pt-3 text-[3.5px] leading-[1.5] sm:text-[4.5px]") }}
-          </div>
+        
+          <style>
+            .sn-anim {
+              width: 100%;
+              max-width: 520px;
+              margin-inline: auto;
+            }
+        
+            .sn-anim svg {
+              display: block;
+              width: 100%;
+              height: auto;
+              overflow: visible;
+            }
+        
+            .sn-window {
+              filter: drop-shadow(0 0 28px rgba(37, 99, 235, .35));
+              animation: sn-float 7s ease-in-out infinite;
+            }
+        
+            .sn-line {
+              transform-box: fill-box;
+              transform-origin: left center;
+              transform: scaleX(0);
+              animation: sn-type 8s ease-out infinite;
+              animation-delay: var(--d);
+            }
+        
+            .sn-pop {
+              opacity: 0;
+              animation: sn-pop 8s ease-out infinite;
+              animation-delay: var(--d);
+            }
+        
+            .sn-blink {
+              animation: sn-blink 1s steps(1) infinite;
+            }
+        
+            .sn-bob {
+              animation: sn-bob 5s ease-in-out infinite;
+              animation-delay: var(--d, 0s);
+            }
+        
+            .sn-gauge {
+              stroke-dasharray: 75.4;
+              stroke-dashoffset: 75.4;
+              transform: rotate(-90deg);
+              transform-box: fill-box;
+              transform-origin: center;
+              animation: sn-gauge 8s ease-out infinite;
+              animation-delay: 3.4s;
+            }
+        
+            @keyframes sn-float {
+              50% {
+                transform: translateY(-8px);
+              }
+            }
+        
+            @keyframes sn-bob {
+              50% {
+                transform: translateY(-10px);
+              }
+            }
+        
+            @keyframes sn-blink {
+              50% {
+                opacity: 0;
+              }
+            }
+        
+            @keyframes sn-type {
+              0% {
+                transform: scaleX(0);
+              }
+        
+              6%,
+              80% {
+                transform: scaleX(1);
+              }
+        
+              88%,
+              100% {
+                transform: scaleX(0);
+              }
+            }
+        
+            @keyframes sn-pop {
+              0% {
+                opacity: 0;
+                transform: translateY(6px);
+              }
+        
+              6%,
+              80% {
+                opacity: 1;
+                transform: none;
+              }
+        
+              88%,
+              100% {
+                opacity: 0;
+                transform: translateY(6px);
+              }
+            }
+        
+            @keyframes sn-gauge {
+              0% {
+                stroke-dashoffset: 75.4;
+              }
+        
+              12%,
+              80% {
+                stroke-dashoffset: 0;
+              }
+        
+              90%,
+              100% {
+                stroke-dashoffset: 75.4;
+              }
+            }
+        
+            @media (prefers-reduced-motion: reduce) {
+              .sn-anim * {
+                animation: none !important;
+              }
+        
+              .sn-line,
+              .sn-pop {
+                opacity: 1;
+                transform: none;
+              }
+        
+              .sn-gauge {
+                stroke-dashoffset: 0;
+              }
+            }
+          </style>
+          {{ else }}
+          <!-- Editor de código (fallback si falta static/images/image_construction.png) -->
+          {{ partial "code-editor.html" (dict "class" "") }}
+          {{ end }}
         </div>
-
-
+        
         <div>
           <p class="sn-eyebrow">Sobre nosotros</p>
           <h2 class="sn-title mt-2">Pasión por la tecnología</h2>
@@ -713,6 +944,98 @@
         }, { threshold: 0.25 });
         stepsObserver.observe(steps);
       }
+
+      // Carrusel de destacados: avanza solo, se pausa al pasar el mouse y permite deslizar
+      document.querySelectorAll('.sn-carousel').forEach(function (carousel) {
+        var track = carousel.querySelector('.sn-carousel-track');
+        var slides = carousel.querySelectorAll('.sn-slide');
+        var dots = carousel.querySelectorAll('.sn-dot');
+        var interval = parseInt(carousel.dataset.interval, 10) || 5000;
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var current = 0;
+        var timer = null;
+        var typingTimer = null;
+
+        // Escribe el título letra por letra (máquina de escribir)
+        function typeTitle(slide) {
+          clearTimeout(typingTimer);
+          var el = slide.querySelector('.sn-type-text');
+          if (!el) return;
+          var full = el.dataset.text;
+          if (reduced) { el.textContent = full; return; }
+          var chars = Array.from(full);
+          var n = 0;
+          el.textContent = '';
+          el.classList.add('is-typing');
+          (function step() {
+            n++;
+            el.textContent = chars.slice(0, n).join('');
+            if (n < chars.length) {
+              typingTimer = setTimeout(step, 40 + Math.random() * 40);
+            } else {
+              typingTimer = setTimeout(function () { el.classList.remove('is-typing'); }, 1200);
+            }
+          })();
+        }
+
+        function go(index) {
+          current = (index + slides.length) % slides.length;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+          slides.forEach(function (s, i) {
+            var active = i === current;
+            var typed = s.querySelector('.sn-type-text');
+            if (typed) {
+              typed.classList.remove('is-typing');
+              typed.textContent = active && !reduced ? '' : typed.dataset.text;
+            }
+            // Reinicia las animaciones de entrada de la diapositiva activa
+            s.classList.remove('is-active');
+            if (active) { void s.offsetWidth; s.classList.add('is-active'); }
+            s.setAttribute('aria-hidden', active ? 'false' : 'true');
+            s.querySelectorAll('a, button').forEach(function (el) {
+              if (active) el.removeAttribute('tabindex'); else el.setAttribute('tabindex', '-1');
+            });
+          });
+          dots.forEach(function (d, i) { d.classList.toggle('is-active', i === current); });
+          // Empieza a escribir cuando la diapositiva ya está casi en su lugar
+          clearTimeout(typingTimer);
+          var target = slides[current];
+          typingTimer = setTimeout(function () { typeTitle(target); }, reduced ? 0 : 350);
+        }
+        function start() {
+          if (reduced || timer) return;
+          timer = setInterval(function () { go(current + 1); }, interval);
+        }
+        function stop() { clearInterval(timer); timer = null; }
+        function restart() { stop(); start(); }
+
+        carousel.querySelectorAll('.sn-carousel-arrow').forEach(function (b) {
+          b.addEventListener('click', function () { go(current + parseInt(b.dataset.dir, 10)); restart(); });
+        });
+        dots.forEach(function (d) {
+          d.addEventListener('click', function () { go(parseInt(d.dataset.index, 10)); restart(); });
+        });
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', start);
+        carousel.addEventListener('focusin', stop);
+        carousel.addEventListener('focusout', start);
+
+        var startX = null;
+        carousel.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; stop(); }, { passive: true });
+        carousel.addEventListener('touchend', function (e) {
+          if (startX === null) return;
+          var dx = e.changedTouches[0].clientX - startX;
+          if (Math.abs(dx) > 40) go(current + (dx < 0 ? 1 : -1));
+          startX = null;
+          start();
+        });
+
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) stop(); else start();
+        });
+        go(0);
+        start();
+      });
 
       // Permite instalar el sitio en el celular como app
       if ('serviceWorker' in navigator) {

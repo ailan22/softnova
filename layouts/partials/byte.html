@@ -1,0 +1,505 @@
+<!-- Byte: mascota de SoftNova. Robot esférico flotante con pantalla LED y módulos de herramientas.
+     - Flota, parpadea y la antena titila.
+     - Los ojos siguen al puntero del mouse.
+     - Al cargar (y al pasar el mouse o tocarlo) saluda con un globo de diálogo y pone cara feliz.
+     - Vive en la pantalla de la laptop del hero. Al bajar sale volando a la esquina inferior derecha
+       y queda fijo; en cada sección nueva comenta algo. Al volver arriba regresa a la laptop. -->
+<div class="sn-byte" id="sn-byte">
+  <div class="sn-byte-bubble" role="status">
+    <strong class="sn-byte-title">¡Hola! Soy Byte 👋</strong>
+    <span class="sn-byte-text">¿Creamos tu web juntos?</span>
+  </div>
+
+  <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" role="img"
+    aria-label="Byte, el robot asistente de SoftNova">
+    <defs>
+      <radialGradient id="sn-byte-pearl" cx="50%" cy="50%" r="55%" fx="34%" fy="28%">
+        <stop offset="0%" stop-color="#ffffff" />
+        <stop offset="55%" stop-color="#e3eaf7" />
+        <stop offset="100%" stop-color="#9fb0d2" />
+      </radialGradient>
+      <radialGradient id="sn-byte-shadow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity=".55" />
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+      </radialGradient>
+      <filter id="sn-byte-neon" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2" result="b" />
+        <feMerge>
+          <feMergeNode in="b" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Brillo en el "piso" que acompaña la flotación -->
+    <ellipse class="sn-byte-floor" cx="100" cy="206" rx="46" ry="8" fill="url(#sn-byte-shadow)" />
+
+    <g class="sn-byte-body">
+      <!-- Antena -->
+      <line x1="100" y1="44" x2="100" y2="26" stroke="#cbd5e1" stroke-width="3.5" stroke-linecap="round" />
+      <circle class="sn-byte-tip" cx="100" cy="21" r="6" fill="#22d3ee" filter="url(#sn-byte-neon)" />
+
+      <!-- Esfera blanca perlada -->
+      <circle cx="100" cy="105" r="62" fill="url(#sn-byte-pearl)" />
+      <ellipse cx="72" cy="66" rx="15" ry="8" fill="#fff" opacity=".8" transform="rotate(-32 72 66)" />
+
+      <!-- Luces laterales -->
+      <circle cx="40" cy="108" r="8" fill="#0b1d5a" stroke="#22d3ee" stroke-width="2" />
+      <circle class="sn-byte-led" cx="40" cy="108" r="3.5" fill="#22d3ee" filter="url(#sn-byte-neon)" />
+      <circle cx="160" cy="108" r="8" fill="#0b1d5a" stroke="#22d3ee" stroke-width="2" />
+      <circle class="sn-byte-led" cx="160" cy="108" r="3.5" fill="#22d3ee" filter="url(#sn-byte-neon)" />
+
+      <!-- Franja neón inferior -->
+      <path d="M52 140q48 30 96 0" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"
+        filter="url(#sn-byte-neon)" opacity=".9" />
+
+      <!-- Pantalla LED -->
+      <rect x="58" y="72" width="84" height="56" rx="24" fill="#050a22" stroke="#22d3ee" stroke-opacity=".55"
+        stroke-width="2" />
+      <g class="sn-byte-face" filter="url(#sn-byte-neon)">
+        <g class="sn-byte-eyes">
+          <!-- Ojos normales -->
+          <g class="sn-byte-open">
+            <rect class="sn-byte-eye" x="77" y="87" width="12" height="17" rx="6" fill="#22d3ee" />
+            <rect class="sn-byte-eye sn-byte-eye-r" x="111" y="87" width="12" height="17" rx="6" fill="#22d3ee" />
+          </g>
+          <!-- Ojos felices ^ ^ -->
+          <g class="sn-byte-happy" fill="none" stroke="#22d3ee" stroke-width="4" stroke-linecap="round">
+            <path d="M76 99q7-10 14 0" />
+            <path d="M110 99q7-10 14 0" />
+          </g>
+        </g>
+        <path d="M89 113q11 8 22 0" fill="none" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- Módulos de herramientas flotantes -->
+    <!-- Pincel de diseño -->
+    <g class="sn-byte-tool" style="--d: 0s; --r: -8deg;">
+      <rect x="2" y="44" width="36" height="36" rx="10" fill="#0f1d5c" stroke="#22d3ee" stroke-opacity=".8" />
+      <path d="M28 52 17 63" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
+      <path d="M17 63c-4 0-6 3-6 7 0 1-1 2-2 2 2 2 4 2 6 2 4 0 6-3 6-6Z" fill="#a78bfa" />
+    </g>
+    <!-- Cursor -->
+    <g class="sn-byte-tool" style="--d: -1.4s; --r: 8deg;">
+      <rect x="164" y="40" width="34" height="34" rx="10" fill="#0f1d5c" stroke="#22d3ee" stroke-opacity=".8" />
+      <path d="M175 48v17l4.5-4 3 6.5 2.5-1-3-6.5h5.5Z" fill="#fff" stroke="#0a1440" stroke-width="1"
+        stroke-linejoin="round" />
+    </g>
+    <!-- Servidor de datos -->
+    <g class="sn-byte-tool" style="--d: -2.6s; --r: -6deg;">
+      <rect x="160" y="150" width="36" height="38" rx="10" fill="#0f1d5c" stroke="#22d3ee" stroke-opacity=".8" />
+      <rect x="168" y="157" width="20" height="9" rx="2.5" fill="#1e3a8a" />
+      <rect x="168" y="169" width="20" height="9" rx="2.5" fill="#1e3a8a" />
+      <circle class="sn-byte-blink" cx="172.5" cy="161.5" r="1.8" fill="#4ade80" />
+      <circle class="sn-byte-blink" cx="172.5" cy="173.5" r="1.8" fill="#4ade80" style="animation-delay: .5s;" />
+      <rect x="177" y="160.5" width="8" height="2" rx="1" fill="#60a5fa" />
+      <rect x="177" y="172.5" width="8" height="2" rx="1" fill="#60a5fa" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .sn-byte {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Con JS, Byte vive fijo en la pantalla y se posiciona con transform */
+  .sn-byte.is-live {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    will-change: transform;
+  }
+
+  /* Vuelo entre el hero y la esquina */
+  .sn-byte.is-moving {
+    transition: transform .9s cubic-bezier(0.65, 0, 0.35, 1), width .9s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .sn-byte.is-moving svg {
+    animation: sn-byte-fly .9s ease-in-out;
+  }
+
+  /* Pantalla de la laptop donde vive Byte (estilos propios: no dependen de clases nuevas de Tailwind) */
+  .sn-laptop-screen.sn-byte-screen {
+    overflow: visible; /* que no se recorten el globo ni las herramientas */
+  }
+
+  .sn-byte-home {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 20;
+    width: 34%;
+    aspect-ratio: 200 / 220;
+    transform: translate(-50%, -48%);
+  }
+
+  .sn-byte-screen-glow {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    width: 46%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 211, 238, .35) 0%, rgba(29, 108, 242, .15) 45%, transparent 70%);
+    animation: sn-byte-screen-pulse 4s ease-in-out infinite;
+  }
+
+  .sn-byte-screen-away {
+    position: absolute;
+    inset: auto 0 12% 0;
+    text-align: center;
+    font: 600 11px/1.4 ui-monospace, monospace;
+    color: #67e8f9;
+    opacity: 0;
+    transition: opacity .15s ease;
+  }
+
+  .sn-byte-screen-away span {
+    animation: sn-byte-glow 1s steps(1) infinite;
+  }
+
+  .sn-byte-screen.is-empty .sn-byte-screen-away {
+    opacity: 1;
+    transition: opacity .4s ease .5s;
+  }
+
+  @keyframes sn-byte-screen-pulse {
+    50% { transform: translate(-50%, -50%) scale(1.12); opacity: .7; }
+  }
+
+  @keyframes sn-byte-fly {
+    30% { transform: rotate(-14deg) scale(1.08); }
+    70% { transform: rotate(8deg); }
+  }
+
+  .sn-byte svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Globo de diálogo */
+  .sn-byte-bubble {
+    position: absolute;
+    right: 40%;
+    bottom: 92%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: max-content;
+    max-width: 210px;
+    padding: 10px 14px;
+    border-radius: 16px 16px 4px 16px;
+    font-size: 13px;
+    line-height: 1.35;
+    color: #cbd5e1;
+    background: rgba(10, 20, 64, 0.92);
+    border: 1px solid rgba(34, 211, 238, 0.6);
+    box-shadow: 0 0 24px -6px rgba(34, 211, 238, 0.6);
+    opacity: 0;
+    transform: translateY(8px) scale(.9);
+    transform-origin: bottom right;
+    transition: opacity .35s ease, transform .45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+  }
+
+  .sn-byte-bubble strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .sn-byte.is-talking .sn-byte-bubble {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Flotación */
+  .sn-byte-body {
+    animation: sn-byte-float 4s ease-in-out infinite;
+  }
+
+  .sn-byte-floor {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sn-byte-floor 4s ease-in-out infinite;
+  }
+
+  .sn-byte-tip {
+    animation: sn-byte-glow 1.6s ease-in-out infinite;
+  }
+
+  .sn-byte-led {
+    animation: sn-byte-glow 2.4s ease-in-out infinite;
+  }
+
+  .sn-byte-blink {
+    animation: sn-byte-glow 1s steps(1) infinite;
+  }
+
+  .sn-byte-tool {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sn-byte-tool 5s ease-in-out infinite;
+    animation-delay: var(--d);
+  }
+
+  /* Ojos: parpadeo y seguimiento del puntero (JS mueve .sn-byte-eyes) */
+  .sn-byte-eyes {
+    transition: transform .25s ease-out;
+  }
+
+  .sn-byte-eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sn-byte-blink 4.5s ease-in-out infinite;
+  }
+
+  .sn-byte-happy {
+    opacity: 0;
+  }
+
+  .sn-byte-open,
+  .sn-byte-happy {
+    transition: opacity .2s ease;
+  }
+
+  .sn-byte.is-happy .sn-byte-open {
+    opacity: 0;
+  }
+
+  .sn-byte.is-happy .sn-byte-happy {
+    opacity: 1;
+  }
+
+  /* Al saludar da un saltito */
+  .sn-byte.is-hop svg {
+    animation: sn-byte-hop .6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes sn-byte-float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+
+  @keyframes sn-byte-floor {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(.75); opacity: .6; }
+  }
+
+  @keyframes sn-byte-glow {
+    50% { opacity: .35; }
+  }
+
+  @keyframes sn-byte-tool {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-9px) rotate(var(--r)); }
+  }
+
+  @keyframes sn-byte-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(.1); }
+  }
+
+  @keyframes sn-byte-hop {
+    40% { transform: translateY(-14px) scale(1.04); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sn-byte *,
+    .sn-byte.is-hop svg {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Espera a que exista toda la página: Byte vigila secciones que están más abajo en el HTML
+  document.addEventListener('DOMContentLoaded', function () {
+    var byte = document.getElementById('sn-byte');
+    var anchor = document.getElementById('sn-byte-anchor');
+    if (!byte) return;
+    var svg = byte.querySelector('svg');
+    var eyes = byte.querySelector('.sn-byte-eyes');
+    var titleEl = byte.querySelector('.sn-byte-title');
+    var textEl = byte.querySelector('.sn-byte-text');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var talkTimer = null;
+
+    // Lo que dice Byte en cada sección (se muestra la primera vez que se llega)
+    var messages = {
+      inicio: ['¡Hola! Soy Byte 👋', '¿Creamos tu web juntos?'],
+      destacados: ['¡Mirá esto! ✨', 'Soluciones que hacen crecer tu negocio.'],
+      servicios: ['Esto es lo que hacemos 🚀', 'Elegí lo que tu negocio necesita.'],
+      proceso: ['Paso a paso 🧩', 'Te acompañamos de la idea al lanzamiento.'],
+      nosotros: ['Somos SoftNova 💙', 'Un equipo cercano y apasionado.'],
+      contacto: ['¡Escribinos! ✉️', 'Te respondemos a la brevedad.']
+    };
+    var current = 'inicio';
+    var seen = { inicio: true };
+
+    // Saluda: globo + cara feliz + saltito
+    function say(id, ms) {
+      var m = messages[id] || messages.inicio;
+      titleEl.textContent = m[0];
+      textEl.textContent = m[1];
+      clearTimeout(talkTimer);
+      byte.classList.add('is-talking', 'is-happy');
+      byte.classList.remove('is-hop');
+      void byte.offsetWidth;
+      byte.classList.add('is-hop');
+      talkTimer = setTimeout(function () {
+        byte.classList.remove('is-talking', 'is-happy');
+      }, ms || 4500);
+    }
+
+    setTimeout(function () { say('inicio', 5500); }, 1200);
+    byte.addEventListener('mouseenter', function () { say(current); });
+    byte.addEventListener('click', function () { say(current); });
+
+    // ---- Acompañar al usuario mientras navega ----
+    // En el hero, Byte vive dentro de su lugar (#sn-byte-anchor) y se desplaza con la página.
+    // Al bajar, pasa a estar fijo en la pantalla y vuela a la esquina inferior derecha.
+    if (anchor) {
+      var docked = false;
+      var moveTimer = null;
+      var ticking = false;
+
+      // Tamaño y lugar en la esquina inferior derecha
+      function dockBox() {
+        var w = window.innerWidth < 640 ? 76 : 104;
+        var m = window.innerWidth < 640 ? 12 : 24;
+        return { x: window.innerWidth - w - m, y: window.innerHeight - w * 1.1 - m, w: w };
+      }
+
+      function place(box) {
+        byte.style.width = box.w + 'px';
+        byte.style.transform = 'translate(' + box.x + 'px,' + box.y + 'px)';
+      }
+
+      function anchorBox() {
+        var r = anchor.getBoundingClientRect();
+        return { x: r.left, y: r.top, w: r.width };
+      }
+
+      function fly(to, done) {
+        clearTimeout(moveTimer);
+        if (reduced) { place(to); if (done) done(); return; }
+        void byte.offsetWidth;
+        byte.classList.add('is-moving');
+        place(to);
+        moveTimer = setTimeout(function () {
+          byte.classList.remove('is-moving');
+          if (done) done();
+        }, 950);
+      }
+
+      var screen = document.querySelector('.sn-byte-screen');
+
+      function dock(animate) {
+        docked = true;
+        if (screen) screen.classList.add('is-empty');
+        byte.classList.remove('is-talking', 'is-happy');
+        var from = byte.parentNode === anchor ? anchorBox() : null;
+        if (byte.parentNode !== document.body) document.body.appendChild(byte);
+        byte.classList.add('is-live');
+        if (from && animate) {
+          place(from);
+          fly(dockBox(), sayPending);
+        } else {
+          place(dockBox());
+          sayPending();
+        }
+      }
+
+      // Si llegó a una sección nueva mientras volaba, la comenta al aterrizar
+      var pending = null;
+      function sayPending() {
+        if (pending && docked) say(pending);
+        pending = null;
+      }
+
+      function undock() {
+        docked = false;
+        byte.classList.remove('is-talking', 'is-happy');
+        if (screen) screen.classList.remove('is-empty');
+        fly(anchorBox(), function () {
+          if (docked) return;
+          // Vuelve a quedar dentro del hero
+          byte.classList.remove('is-live');
+          byte.style.width = '';
+          byte.style.transform = '';
+          anchor.appendChild(byte);
+        });
+      }
+
+      function update() {
+        ticking = false;
+        var shouldDock = anchor.getBoundingClientRect().bottom < 100;
+        if (shouldDock && !docked) dock(true);
+        else if (!shouldDock && docked) undock();
+        else if (docked && !byte.classList.contains('is-moving')) place(dockBox());
+        else if (!docked && byte.classList.contains('is-moving')) place(anchorBox());
+      }
+
+      function requestUpdate() {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      }
+
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate);
+      // Si la página se abre ya scrolleada, aparece directo en la esquina
+      if (anchor.getBoundingClientRect().bottom < 100) dock(false);
+
+    // Comenta algo al entrar en cada sección nueva
+      var sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          current = entry.target.id;
+          if (seen[current] || !messages[current]) return;
+          seen[current] = true;
+          if (docked && !byte.classList.contains('is-moving')) {
+            var id = current;
+            setTimeout(function () { say(id); }, reduced ? 0 : 400);
+          } else {
+            pending = current;
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      Object.keys(messages).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) sectionObserver.observe(el);
+      });
+    }
+
+    // Los ojos siguen al puntero (máximo 5 unidades del SVG)
+    if (reduced) return;
+    var frame = null;
+    window.addEventListener('pointermove', function (e) {
+      if (frame) return;
+      frame = requestAnimationFrame(function () {
+        frame = null;
+        var r = svg.getBoundingClientRect();
+        var cx = r.left + r.width / 2;
+        var cy = r.top + r.height * 0.45;
+        var dx = e.clientX - cx;
+        var dy = e.clientY - cy;
+        var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        var k = Math.min(dist / 200, 1) * 5;
+        eyes.style.transform = 'translate(' + (dx / dist * k).toFixed(2) + 'px,' + (dy / dist * k * 0.7).toFixed(2) + 'px)';
+      });
+    }, { passive: true });
+  });
+</script>

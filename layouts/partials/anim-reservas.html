@@ -1,0 +1,362 @@
+<!-- Ilustración animada: sistema de reservas (diapositiva del carrusel).
+     Secuencia: el cursor elige un día → elige un horario → toca "Reservar" → aparece la confirmación.
+     Las animaciones arrancan desde cero cada vez que la diapositiva se activa (.is-active). -->
+<div class="sn-rv sn-slide-anim mx-auto w-full" aria-hidden="true">
+  <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sn-rv-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#2563eb" stop-opacity=".30" />
+        <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="sn-rv-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1fb6ff" />
+        <stop offset="100%" stop-color="#1d5cf2" />
+      </linearGradient>
+    </defs>
+
+    <!-- Halo de fondo -->
+    <circle cx="230" cy="175" r="175" fill="url(#sn-rv-glow)" />
+
+    <!-- Ventana del navegador -->
+    <g class="sn-rv-window">
+      <rect x="40" y="40" width="340" height="250" rx="14" fill="#0a1440" stroke="#1e40af" stroke-opacity=".8" />
+      <line x1="40" y1="72" x2="380" y2="72" stroke="#1e40af" stroke-opacity=".6" />
+      <circle cx="60" cy="56" r="4" fill="#ef4444" opacity=".8" />
+      <circle cx="76" cy="56" r="4" fill="#f59e0b" opacity=".8" />
+      <circle cx="92" cy="56" r="4" fill="#22c55e" opacity=".8" />
+      <rect x="120" y="49" width="190" height="14" rx="7" fill="#111d55" />
+      <text x="215" y="59" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8"
+        fill="#64748b">https://tunegocio.uy/reservas</text>
+
+      <!-- Calendario -->
+      <text x="56" y="92" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Noviembre</text>
+      <text x="238" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569">›</text>
+      <g font-family="Inter, sans-serif" font-size="7" fill="#64748b" text-anchor="middle">
+        <text x="70" y="108">L</text><text x="98" y="108">M</text><text x="126" y="108">M</text>
+        <text x="154" y="108">J</text><text x="182" y="108">V</text><text x="210" y="108">S</text>
+        <text x="238" y="108">D</text>
+      </g>
+      <g fill="#13205e">
+        {{- range $r := seq 0 3 }}
+        {{- range $c := seq 0 6 }}
+        {{- $dim := or (and (eq $r 0) (lt $c 2)) (ge $c 6) }}
+        <rect x="{{ sub (add 70 (mul $c 28)) 11 }}" y="{{ add 116 (mul $r 24) }}" width="22" height="20" rx="4"
+          {{ if $dim }}opacity=".35"{{ end }} />
+        {{- end }}
+        {{- end }}
+      </g>
+      <!-- Días ya ocupados -->
+      <g fill="#1e2a6b">
+        <rect x="87" y="140" width="22" height="20" rx="4" />
+        <rect x="143" y="164" width="22" height="20" rx="4" />
+        <rect x="199" y="188" width="22" height="20" rx="4" />
+      </g>
+      <!-- Día elegido -->
+      <g class="sn-rv-day">
+        <rect x="171" y="164" width="22" height="20" rx="4" fill="url(#sn-rv-grad)" />
+        <path d="m177 174 3 3 6-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </g>
+
+      <line x1="266" y1="80" x2="266" y2="282" stroke="#1e40af" stroke-opacity=".4" />
+
+      <!-- Horarios -->
+      <text x="280" y="92" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Horarios</text>
+      <g font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1" text-anchor="middle">
+        <rect x="280" y="104" width="84" height="22" rx="11" fill="none" stroke="#1e40af" />
+        <text x="322" y="118">09:00</text>
+        <rect x="280" y="132" width="84" height="22" rx="11" fill="none" stroke="#1e40af" />
+        <text x="322" y="146">10:00</text>
+        <rect x="280" y="160" width="84" height="22" rx="11" fill="none" stroke="#1e40af" />
+        <text x="322" y="174">11:00</text>
+        <rect x="280" y="188" width="84" height="22" rx="11" fill="none" stroke="#1e40af" />
+        <text x="322" y="202">12:00</text>
+      </g>
+      <!-- Horario elegido -->
+      <g class="sn-rv-slot">
+        <rect x="280" y="132" width="84" height="22" rx="11" fill="url(#sn-rv-grad)" />
+        <text x="322" y="146" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700"
+          fill="#fff">10:00</text>
+      </g>
+      <!-- Horario ya reservado (pasa a rojo después de tocar "Reservar") -->
+      <g class="sn-rv-taken">
+        <rect x="280" y="132" width="84" height="22" rx="11" fill="#dc2626" />
+        <text x="322" y="146" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700"
+          fill="#fff">10:00</text>
+      </g>
+
+      <!-- Botón Reservar -->
+      <g class="sn-rv-btn">
+        <rect x="280" y="236" width="84" height="26" rx="8" fill="#1d4ed8" />
+        <text x="322" y="252" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700"
+          fill="#fff">Reservar</text>
+      </g>
+
+      <!-- Datos del cliente -->
+      <g fill="#1e2a6b">
+        <rect x="56" y="222" width="190" height="16" rx="5" />
+        <rect x="56" y="246" width="190" height="16" rx="5" />
+      </g>
+      <g class="sn-rv-fill" style="--d: 0s;"><rect x="62" y="228" width="70" height="4" rx="2" fill="#94a3b8" /></g>
+      <g class="sn-rv-fill" style="--d: .15s;"><rect x="62" y="252" width="96" height="4" rx="2" fill="#94a3b8" /></g>
+    </g>
+
+    <!-- Ondas de clic -->
+    <circle class="sn-rv-ripple" cx="182" cy="174" r="14" style="--d: 1.1s;" />
+    <circle class="sn-rv-ripple" cx="322" cy="143" r="14" style="--d: 2.2s;" />
+    <circle class="sn-rv-ripple" cx="322" cy="249" r="14" style="--d: 3.35s;" />
+
+    <!-- Cursor -->
+    <g class="sn-rv-cursor">
+      <path d="M0 0v16l4.5-4 3 6.5 2.5-1-3-6.5h5.5Z" fill="#fff" stroke="#0a1440" stroke-width="1.2"
+        stroke-linejoin="round" />
+    </g>
+
+    <!-- Confirmación -->
+    <g class="sn-rv-toast">
+      <rect x="236" y="262" width="186" height="50" rx="12" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".7" />
+      <circle cx="260" cy="287" r="12" fill="#22c55e" />
+      <path d="m254 287 4 4 8-8" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <text x="282" y="283" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Reserva
+        confirmada</text>
+      <text x="282" y="298" font-family="Inter, sans-serif" font-size="8.5" fill="#94a3b8">Viernes · 10:00 hs</text>
+    </g>
+
+    <!-- Etiquetas flotantes -->
+    <g class="sn-rv-bob" style="--d: 0s;">
+      <rect x="6" y="14" width="46" height="46" rx="12" fill="#0f1d5c" stroke="#3b82f6" stroke-opacity=".8" />
+      <circle cx="29" cy="37" r="12" fill="none" stroke="#60a5fa" stroke-width="2.2" />
+      <path class="sn-rv-hand" d="M29 37v-7" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round" />
+      <path d="M29 37h5" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round" />
+    </g>
+    <g class="sn-rv-bob" style="--d: -2.5s;">
+      <rect x="8" y="300" width="150" height="38" rx="10" fill="#0f1d5c" stroke="#8b5cf6" stroke-opacity=".7" />
+      <g class="sn-rv-bell">
+        <path d="M27 327v-1.5a1 1 0 0 1 .4-.8l1-.9V318a6 6 0 0 1 12 0v5.8l1 .9a1 1 0 0 1 .4.8v1.5Z" fill="#a78bfa" />
+        <circle cx="34.5" cy="329.5" r="2" fill="#a78bfa" />
+      </g>
+      <text x="50" y="323" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">Recordatorio enviado</text>
+    </g>
+    <g class="sn-rv-badge">
+      <rect x="350" y="14" width="96" height="36" rx="10" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".6" />
+      <text x="368" y="36" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#4ade80">+1</text>
+      <text x="388" y="36" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">turno hoy</text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .sn-rv {
+    max-width: 520px;
+  }
+
+  .sn-rv svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sn-rv-window {
+    filter: drop-shadow(0 0 28px rgba(37, 99, 235, .35));
+  }
+
+  .sn-rv-day,
+  .sn-rv-slot,
+  .sn-rv-taken,
+  .sn-rv-toast,
+  .sn-rv-badge,
+  .sn-rv-ripple,
+  .sn-rv-cursor {
+    opacity: 0;
+  }
+
+  .sn-rv-day,
+  .sn-rv-slot,
+  .sn-rv-taken,
+  .sn-rv-btn,
+  .sn-rv-toast,
+  .sn-rv-badge,
+  .sn-rv-fill,
+  .sn-rv-ripple,
+  .sn-rv-bell {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .sn-rv-fill {
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  .sn-rv-ripple {
+    fill: none;
+    stroke: #38bdf8;
+    stroke-width: 2;
+  }
+
+  /* Todo corre en un ciclo de 6.5s, lo que dura cada diapositiva */
+  .is-active .sn-rv-window {
+    animation: sn-rv-float 7s ease-in-out infinite;
+  }
+
+  .is-active .sn-rv-cursor {
+    animation: sn-rv-cursor 6.5s ease-in-out infinite;
+  }
+
+  .is-active .sn-rv-day {
+    animation: sn-rv-day 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-rv-slot {
+    animation: sn-rv-slot 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-rv-taken {
+    animation: sn-rv-taken 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-rv-fill {
+    animation: sn-rv-fill 6.5s ease-out infinite;
+    animation-delay: var(--d);
+  }
+
+  .is-active .sn-rv-btn {
+    animation: sn-rv-btn 6.5s ease-in-out infinite;
+  }
+
+  .is-active .sn-rv-ripple {
+    animation: sn-rv-ripple 6.5s ease-out infinite;
+    animation-delay: var(--d);
+  }
+
+  .is-active .sn-rv-toast {
+    animation: sn-rv-toast 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-rv-badge {
+    animation: sn-rv-badge 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-rv-bell {
+    animation: sn-rv-bell 6.5s ease-in-out infinite;
+  }
+
+  .sn-rv-bob {
+    animation: sn-rv-bob 5s ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+
+  .sn-rv-hand {
+    transform-box: view-box;
+    transform-origin: 29px 37px;
+    animation: sn-rv-spin 4s linear infinite;
+  }
+
+  @keyframes sn-rv-float {
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes sn-rv-bob {
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes sn-rv-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Recorrido del cursor: día → horario → botón */
+  @keyframes sn-rv-cursor {
+    0%   { opacity: 0; transform: translate(400px, 330px); }
+    5%   { opacity: 1; transform: translate(400px, 330px); }
+    15%  { transform: translate(184px, 176px); }
+    17%  { transform: translate(184px, 176px) scale(.85); }
+    19%  { transform: translate(184px, 176px); }
+    31%  { transform: translate(326px, 145px); }
+    33%  { transform: translate(326px, 145px) scale(.85); }
+    35%  { transform: translate(326px, 145px); }
+    49%  { transform: translate(326px, 251px); }
+    51%  { transform: translate(326px, 251px) scale(.85); }
+    53%  { opacity: 1; transform: translate(326px, 251px); }
+    62%  { opacity: 0; transform: translate(360px, 300px); }
+    100% { opacity: 0; transform: translate(360px, 300px); }
+  }
+
+  @keyframes sn-rv-day {
+    0%, 16%  { opacity: 0; transform: scale(.4); }
+    20%      { opacity: 1; transform: scale(1.15); }
+    23%, 92% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; transform: scale(1); }
+  }
+
+  @keyframes sn-rv-slot {
+    0%, 33%  { opacity: 0; transform: scale(.9); }
+    36%      { opacity: 1; transform: scale(1.06); }
+    39%, 92% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; }
+  }
+
+  /* El horario reservado queda ocupado: pasa a rojo */
+  @keyframes sn-rv-taken {
+    0%, 53%  { opacity: 0; transform: scale(1); }
+    57%      { opacity: 1; transform: scale(1.1); }
+    60%, 92% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; }
+  }
+
+  @keyframes sn-rv-fill {
+    0%, 38%  { transform: scaleX(0); }
+    46%, 92% { transform: scaleX(1); }
+    97%, 100% { transform: scaleX(0); }
+  }
+
+  @keyframes sn-rv-btn {
+    0%, 50%, 56%, 100% { transform: scale(1); filter: none; }
+    52%      { transform: scale(.92); filter: brightness(1.4); }
+  }
+
+  @keyframes sn-rv-ripple {
+    0%   { opacity: .9; transform: scale(.3); }
+    8%   { opacity: 0; transform: scale(1.6); }
+    100% { opacity: 0; transform: scale(1.6); }
+  }
+
+  @keyframes sn-rv-toast {
+    0%, 55%  { opacity: 0; transform: translateY(16px) scale(.9); }
+    61%, 92% { opacity: 1; transform: none; }
+    97%, 100% { opacity: 0; transform: translateY(8px); }
+  }
+
+  @keyframes sn-rv-badge {
+    0%, 64%  { opacity: 0; transform: scale(.5); }
+    70%, 92% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; transform: scale(.8); }
+  }
+
+  @keyframes sn-rv-bell {
+    0%, 70%, 82%, 100% { transform: rotate(0); }
+    73% { transform: rotate(16deg); }
+    76% { transform: rotate(-14deg); }
+    79% { transform: rotate(8deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sn-rv * {
+      animation: none !important;
+    }
+
+    .sn-rv-day,
+    .sn-rv-slot,
+    .sn-rv-taken,
+    .sn-rv-toast,
+    .sn-rv-badge {
+      opacity: 1;
+      transform: none;
+    }
+
+    .sn-rv-fill {
+      transform: none;
+    }
+  }
+</style>

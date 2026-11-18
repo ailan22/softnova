@@ -1,0 +1,455 @@
+<!-- Ilustración animada: pedidos y menú digital con QR (diapositiva del carrusel).
+     Secuencia: el celular escanea el QR de la mesa → se abre el menú → se agregan dos productos →
+     "Enviar pedido" → "Pedido enviado a cocina".
+     Las animaciones arrancan desde cero cada vez que la diapositiva se activa (.is-active). -->
+<div class="sn-mq sn-slide-anim mx-auto w-full" aria-hidden="true">
+  <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sn-mq-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#2563eb" stop-opacity=".30" />
+        <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="sn-mq-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1fb6ff" />
+        <stop offset="100%" stop-color="#1d5cf2" />
+      </linearGradient>
+      <linearGradient id="sn-mq-wood" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#92400e" />
+        <stop offset="100%" stop-color="#451a03" />
+      </linearGradient>
+      <linearGradient id="sn-mq-beam" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0" />
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity=".55" />
+      </linearGradient>
+      <clipPath id="sn-mq-screen">
+        <rect x="238" y="32" width="134" height="284" rx="16" />
+      </clipPath>
+    </defs>
+
+    <!-- Halo de fondo -->
+    <circle cx="230" cy="175" r="175" fill="url(#sn-mq-glow)" />
+
+    <!-- Cartel de mesa con QR -->
+    <g class="sn-mq-stand">
+      <rect x="40" y="252" width="130" height="18" rx="5" fill="url(#sn-mq-wood)" />
+      <rect x="54" y="118" width="102" height="138" rx="8" fill="#f5efe6" />
+      <text x="105" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="800"
+        fill="#78350f" letter-spacing=".5">ESCANEÁ</text>
+      <text x="105" y="149" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="800"
+        fill="#78350f" letter-spacing=".5">EL MENÚ</text>
+      <!-- Código QR -->
+      <g class="sn-mq-qr" fill="#1c1917">
+        <rect x="75" y="158" width="60" height="60" rx="3" fill="#fff" stroke="#d6c7b0" />
+        <path d="M80 163h16v16H80Zm3 3v10h10v-10Zm2 2h6v6h-6Z" fill-rule="evenodd" />
+        <path d="M114 163h16v16h-16Zm3 3v10h10v-10Zm2 2h6v6h-6Z" fill-rule="evenodd" />
+        <path d="M80 197h16v16H80Zm3 3v10h10v-10Zm2 2h6v6h-6Z" fill-rule="evenodd" />
+        <rect x="99" y="163" width="4" height="4" /><rect x="105" y="167" width="4" height="4" />
+        <rect x="99" y="171" width="4" height="8" /><rect x="105" y="175" width="4" height="4" />
+        <rect x="80" y="183" width="4" height="4" /><rect x="88" y="183" width="8" height="4" />
+        <rect x="99" y="183" width="4" height="4" /><rect x="107" y="183" width="6" height="4" />
+        <rect x="118" y="183" width="4" height="4" /><rect x="126" y="183" width="4" height="8" />
+        <rect x="84" y="189" width="4" height="4" /><rect x="101" y="189" width="8" height="4" />
+        <rect x="114" y="189" width="6" height="4" /><rect x="99" y="197" width="4" height="4" />
+        <rect x="105" y="199" width="4" height="6" /><rect x="114" y="197" width="8" height="4" />
+        <rect x="126" y="197" width="4" height="4" /><rect x="99" y="207" width="6" height="4" />
+        <rect x="110" y="205" width="4" height="8" /><rect x="118" y="205" width="4" height="4" />
+        <rect x="124" y="209" width="6" height="4" />
+      </g>
+      <text x="105" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-style="italic"
+        fill="#b45309">¡Gracias!</text>
+    </g>
+    <!-- Línea de escaneo sobre el QR -->
+    <g class="sn-mq-scanline">
+      <rect x="70" y="146" width="70" height="12" fill="url(#sn-mq-beam)" />
+      <rect x="70" y="157" width="70" height="2" rx="1" fill="#22d3ee" />
+    </g>
+
+    <!-- Celular -->
+    <g class="sn-mq-phone">
+      <rect x="230" y="24" width="150" height="300" rx="24" fill="#0d1220" stroke="#8a93a6" stroke-width="2" />
+      <rect x="238" y="32" width="134" height="284" rx="16" fill="#0a1440" />
+
+      <g clip-path="url(#sn-mq-screen)">
+        <!-- Pantalla 1: cámara escaneando -->
+        <g class="sn-mq-cam">
+          <rect x="238" y="32" width="134" height="284" fill="#050a22" />
+          <path d="M270 130v-14h14M340 130v-14h-14M270 200v14h14M340 200v14h-14" fill="none" stroke="#22d3ee"
+            stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="285" y="135" width="40" height="60" rx="3" fill="#f5efe6" opacity=".2" />
+          <rect x="290" y="150" width="30" height="30" rx="2" fill="#fff" opacity=".35" />
+          <text x="305" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="9"
+            fill="#94a3b8">Escaneando…</text>
+        </g>
+
+        <!-- Pantalla 2: menú digital -->
+        <g class="sn-mq-menu">
+          <text x="246" y="58" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="#e2e8f0">La
+            Parrilla</text>
+          <rect x="328" y="48" width="36" height="14" rx="7" fill="#1e2a6b" />
+          <text x="346" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" font-weight="700"
+            fill="#60a5fa">Mesa 4</text>
+
+          <g font-family="Inter, sans-serif" font-size="7" font-weight="600" text-anchor="middle">
+            <rect x="246" y="68" width="36" height="14" rx="7" fill="url(#sn-mq-grad)" />
+            <text x="264" y="77.5" fill="#fff">Platos</text>
+            <rect x="286" y="68" width="40" height="14" rx="7" fill="#13205e" />
+            <text x="306" y="77.5" fill="#94a3b8">Bebidas</text>
+            <rect x="330" y="68" width="34" height="14" rx="7" fill="#13205e" />
+            <text x="347" y="77.5" fill="#94a3b8">Postres</text>
+          </g>
+
+          <!-- Item 1: hamburguesa -->
+          <rect x="246" y="94" width="118" height="42" rx="8" fill="#13205e" />
+          <rect x="252" y="100" width="30" height="30" rx="6" fill="#451a03" />
+          <path d="M257 113a10 7 0 0 1 20 0Z" fill="#f59e0b" />
+          <rect x="256" y="114" width="22" height="3" rx="1.5" fill="#22c55e" />
+          <rect x="256" y="117.5" width="22" height="4" rx="2" fill="#7c2d12" />
+          <rect x="257" y="122" width="20" height="4" rx="2" fill="#f59e0b" />
+          <text x="288" y="111" font-family="Inter, sans-serif" font-size="8" font-weight="700"
+            fill="#e2e8f0">Hamburguesa</text>
+          <text x="288" y="125" font-family="Inter, sans-serif" font-size="7.5" fill="#94a3b8">$ 420</text>
+
+          <!-- Item 2: pizza -->
+          <rect x="246" y="144" width="118" height="42" rx="8" fill="#13205e" />
+          <rect x="252" y="150" width="30" height="30" rx="6" fill="#450a0a" />
+          <path d="M256 156h22l-11 21Z" fill="#fbbf24" />
+          <path d="M256 156h22" stroke="#b45309" stroke-width="3" stroke-linecap="round" />
+          <circle cx="264" cy="162" r="2" fill="#dc2626" /><circle cx="270" cy="161" r="2" fill="#dc2626" />
+          <circle cx="267" cy="168" r="2" fill="#dc2626" />
+          <text x="288" y="161" font-family="Inter, sans-serif" font-size="8" font-weight="700"
+            fill="#e2e8f0">Pizza</text>
+          <text x="288" y="175" font-family="Inter, sans-serif" font-size="7.5" fill="#94a3b8">$ 380</text>
+
+          <!-- Item 3: limonada -->
+          <rect x="246" y="194" width="118" height="42" rx="8" fill="#13205e" />
+          <rect x="252" y="200" width="30" height="30" rx="6" fill="#052e16" />
+          <path d="M260 206h14l-2 19h-10Z" fill="#fef08a" opacity=".9" />
+          <path d="M260 206h14" stroke="#fff" stroke-width="1.2" />
+          <circle cx="273" cy="207" r="3.5" fill="#84cc16" />
+          <path d="M269 202l-2 10" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round" />
+          <text x="288" y="211" font-family="Inter, sans-serif" font-size="8" font-weight="700"
+            fill="#e2e8f0">Limonada</text>
+          <text x="288" y="225" font-family="Inter, sans-serif" font-size="7.5" fill="#94a3b8">$ 150</text>
+
+          <!-- Botones + -->
+          <g fill="url(#sn-mq-grad)">
+            <circle cx="352" cy="115" r="8" /><circle cx="352" cy="165" r="8" /><circle cx="352" cy="215" r="8" />
+          </g>
+          <path d="M352 111v8m-4-4h8M352 161v8m-4-4h8M352 211v8m-4-4h8" stroke="#fff" stroke-width="1.8"
+            stroke-linecap="round" />
+          <!-- Cantidades elegidas -->
+          <g class="sn-mq-q1">
+            <circle cx="352" cy="115" r="8" fill="#22c55e" />
+            <text x="352" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="800"
+              fill="#fff">1</text>
+          </g>
+          <g class="sn-mq-q3">
+            <circle cx="352" cy="215" r="8" fill="#22c55e" />
+            <text x="352" y="218" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="800"
+              fill="#fff">1</text>
+          </g>
+
+          <!-- Barra del pedido -->
+          <g class="sn-mq-bar">
+            <rect x="246" y="266" width="118" height="38" rx="10" fill="url(#sn-mq-grad)" />
+            <text x="305" y="282" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="800"
+              fill="#fff">Enviar pedido</text>
+            <text class="sn-mq-sum1" x="305" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5"
+              fill="#e0f2fe">1 producto · $ 420</text>
+            <text class="sn-mq-sum2" x="305" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5"
+              fill="#e0f2fe">2 productos · $ 570</text>
+          </g>
+        </g>
+      </g>
+      <rect x="285" y="36" width="40" height="9" rx="4.5" fill="#0d1220" />
+    </g>
+
+    <!-- Toques en la pantalla -->
+    <circle class="sn-mq-ripple" cx="352" cy="115" r="12" style="--d: 2.08s;" />
+    <circle class="sn-mq-ripple" cx="352" cy="215" r="12" style="--d: 2.86s;" />
+    <circle class="sn-mq-ripple" cx="305" cy="285" r="14" style="--d: 3.7s;" />
+    <circle class="sn-mq-touch" r="9" />
+
+    <!-- Confirmación -->
+    <g class="sn-mq-toast">
+      <rect x="8" y="290" width="200" height="50" rx="12" fill="#0f1d5c" stroke="#22c55e" stroke-opacity=".7" />
+      <circle cx="32" cy="315" r="12" fill="#22c55e" />
+      <path d="m26 315 4 4 8-8" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <text x="54" y="311" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Pedido
+        enviado a cocina</text>
+      <text x="54" y="326" font-family="Inter, sans-serif" font-size="8.5" fill="#94a3b8">Mesa 4 · $ 570</text>
+    </g>
+
+    <!-- Aviso en cocina -->
+    <g class="sn-mq-badge">
+      <rect x="8" y="22" width="150" height="38" rx="10" fill="#0f1d5c" stroke="#f59e0b" stroke-opacity=".7" />
+      <g class="sn-mq-bell">
+        <path d="M23 49v-1.5a1 1 0 0 1 .4-.8l1-.9V40a6 6 0 0 1 12 0v5.8l1 .9a1 1 0 0 1 .4.8V49Z" fill="#fbbf24" />
+        <circle cx="30.5" cy="51.5" r="2" fill="#fbbf24" />
+      </g>
+      <text x="46" y="39" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#e2e8f0">Cocina</text>
+      <text x="46" y="51" font-family="Inter, sans-serif" font-size="8" fill="#94a3b8">Nuevo pedido · Mesa 4</text>
+    </g>
+
+    <!-- Etiqueta flotante -->
+    <g class="sn-mq-bob">
+      <rect x="388" y="96" width="66" height="30" rx="10" fill="#0f1d5c" stroke="#8b5cf6" stroke-opacity=".7" />
+      <g fill="#a78bfa">
+        <path d="M398 104h6v6h-6Zm8 0h6v6h-6Zm-8 8h6v6h-6Z" />
+        <rect x="407" y="113" width="2.5" height="2.5" /><rect x="410" y="116" width="2.5" height="2.5" />
+      </g>
+      <text x="418" y="115" font-family="Inter, sans-serif" font-size="8.5" fill="#cbd5e1">Sin fila</text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .sn-mq {
+    max-width: 520px;
+  }
+
+  .sn-mq svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sn-mq-phone {
+    filter: drop-shadow(0 0 28px rgba(37, 99, 235, .35));
+  }
+
+  .sn-mq-scanline,
+  .sn-mq-menu,
+  .sn-mq-q1,
+  .sn-mq-q3,
+  .sn-mq-bar,
+  .sn-mq-sum2,
+  .sn-mq-toast,
+  .sn-mq-badge,
+  .sn-mq-ripple,
+  .sn-mq-touch {
+    opacity: 0;
+  }
+
+  .sn-mq-q1,
+  .sn-mq-q3,
+  .sn-mq-bar,
+  .sn-mq-toast,
+  .sn-mq-badge,
+  .sn-mq-ripple,
+  .sn-mq-qr,
+  .sn-mq-bell {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .sn-mq-ripple {
+    fill: none;
+    stroke: #38bdf8;
+    stroke-width: 2;
+  }
+
+  .sn-mq-touch {
+    fill: rgba(255, 255, 255, .55);
+    stroke: rgba(255, 255, 255, .9);
+    stroke-width: 1.5;
+  }
+
+  /* Todo corre en un ciclo de 6.5s, lo que dura cada diapositiva */
+  .is-active .sn-mq-phone {
+    animation: sn-mq-float 7s ease-in-out infinite;
+  }
+
+  .is-active .sn-mq-scanline {
+    animation: sn-mq-scanline 6.5s ease-in-out infinite;
+  }
+
+  .is-active .sn-mq-qr {
+    animation: sn-mq-qr 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-mq-cam {
+    animation: sn-mq-cam 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-mq-menu {
+    animation: sn-mq-menu 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-mq-touch {
+    animation: sn-mq-touch 6.5s ease-in-out infinite;
+  }
+
+  .is-active .sn-mq-ripple {
+    animation: sn-mq-ripple 6.5s ease-out infinite;
+    animation-delay: var(--d);
+  }
+
+  .is-active .sn-mq-q1 {
+    animation: sn-mq-q1 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mq-q3 {
+    animation: sn-mq-q3 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mq-bar {
+    animation: sn-mq-bar 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mq-sum1 {
+    animation: sn-mq-sum1 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-mq-sum2 {
+    animation: sn-mq-sum2 6.5s ease-out infinite;
+  }
+
+  .is-active .sn-mq-toast {
+    animation: sn-mq-toast 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mq-badge {
+    animation: sn-mq-badge 6.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  .is-active .sn-mq-bell {
+    animation: sn-mq-bell 6.5s ease-in-out infinite;
+  }
+
+  .sn-mq-bob {
+    animation: sn-mq-bob 5s ease-in-out infinite;
+  }
+
+  @keyframes sn-mq-float {
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes sn-mq-bob {
+    50% { transform: translateY(-10px); }
+  }
+
+  /* La línea barre el QR dos veces */
+  @keyframes sn-mq-scanline {
+    0%   { opacity: 0; transform: translateY(0); }
+    2%   { opacity: 1; transform: translateY(0); }
+    8%   { transform: translateY(60px); }
+    14%  { opacity: 1; transform: translateY(0); }
+    17%, 100% { opacity: 0; transform: translateY(0); }
+  }
+
+  @keyframes sn-mq-qr {
+    0%, 14%, 22%, 100% { transform: none; filter: none; }
+    17% { transform: scale(1.08); filter: drop-shadow(0 0 6px #22d3ee); }
+  }
+
+  @keyframes sn-mq-cam {
+    0%, 16%  { opacity: 1; }
+    20%, 95% { opacity: 0; }
+    99%, 100% { opacity: 1; }
+  }
+
+  @keyframes sn-mq-menu {
+    0%, 17%  { opacity: 0; transform: translateY(12px); }
+    22%, 93% { opacity: 1; transform: none; }
+    97%, 100% { opacity: 0; transform: none; }
+  }
+
+  /* El dedo toca: + hamburguesa → + limonada → Enviar pedido */
+  @keyframes sn-mq-touch {
+    0%, 24%  { opacity: 0; transform: translate(345px, 150px); }
+    27%      { opacity: 1; transform: translate(345px, 150px); }
+    31%      { transform: translate(352px, 115px); }
+    32%      { transform: translate(352px, 115px) scale(.7); }
+    34%      { transform: translate(352px, 115px); }
+    42%      { transform: translate(352px, 215px); }
+    44%      { transform: translate(352px, 215px) scale(.7); }
+    46%      { transform: translate(352px, 215px); }
+    55%      { transform: translate(305px, 285px); }
+    57%      { transform: translate(305px, 285px) scale(.7); }
+    59%      { opacity: 1; transform: translate(305px, 285px); }
+    64%, 100% { opacity: 0; transform: translate(305px, 285px); }
+  }
+
+  @keyframes sn-mq-ripple {
+    0%   { opacity: .9; transform: scale(.3); }
+    8%   { opacity: 0; transform: scale(1.6); }
+    100% { opacity: 0; transform: scale(1.6); }
+  }
+
+  @keyframes sn-mq-q1 {
+    0%, 31%  { opacity: 0; transform: scale(.3); }
+    35%      { opacity: 1; transform: scale(1.3); }
+    38%, 93% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; }
+  }
+
+  @keyframes sn-mq-q3 {
+    0%, 43%  { opacity: 0; transform: scale(.3); }
+    47%      { opacity: 1; transform: scale(1.3); }
+    50%, 93% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; }
+  }
+
+  @keyframes sn-mq-bar {
+    0%, 33%  { opacity: 0; transform: translateY(20px); }
+    37%, 56% { opacity: 1; transform: none; }
+    57.5%    { opacity: 1; transform: scale(.94); filter: brightness(1.3); }
+    60%, 93% { opacity: 1; transform: none; filter: none; }
+    97%, 100% { opacity: 0; }
+  }
+
+  @keyframes sn-mq-sum1 {
+    0%, 44%  { opacity: 1; }
+    47%, 100% { opacity: 0; }
+  }
+
+  @keyframes sn-mq-sum2 {
+    0%, 45%  { opacity: 0; }
+    48%, 93% { opacity: 1; }
+    97%, 100% { opacity: 0; }
+  }
+
+  @keyframes sn-mq-toast {
+    0%, 59%  { opacity: 0; transform: translateY(16px) scale(.9); }
+    65%, 92% { opacity: 1; transform: none; }
+    97%, 100% { opacity: 0; transform: translateY(8px); }
+  }
+
+  @keyframes sn-mq-badge {
+    0%, 66%  { opacity: 0; transform: scale(.5); }
+    72%, 92% { opacity: 1; transform: scale(1); }
+    97%, 100% { opacity: 0; transform: scale(.8); }
+  }
+
+  @keyframes sn-mq-bell {
+    0%, 72%, 84%, 100% { transform: rotate(0); }
+    75% { transform: rotate(16deg); }
+    78% { transform: rotate(-14deg); }
+    81% { transform: rotate(8deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sn-mq * {
+      animation: none !important;
+    }
+
+    .sn-mq-cam,
+    .sn-mq-sum1 {
+      opacity: 0;
+    }
+
+    .sn-mq-menu,
+    .sn-mq-q1,
+    .sn-mq-q3,
+    .sn-mq-bar,
+    .sn-mq-sum2,
+    .sn-mq-toast,
+    .sn-mq-badge {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
