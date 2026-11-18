@@ -21,5 +21,19 @@
   ],
   "observability": {
     "enabled": true
+  },
+  // Configuración para las vistas previas de ramas que no son main (DEV, `wrangler preview`).
+  // Usa la misma casilla porque send_email solo puede enviar a direcciones verificadas en Cloudflare.
+  "previews": {
+    "vars": {
+      "CONTACT_EMAIL": "softnova.contacto@gmail.com",
+      "FROM_EMAIL": "formulario@softnova.uy"
+    },
+    "send_email": [
+      {
+        "name": "SEND_EMAIL",
+        "destination_address": "softnova.contacto@gmail.com"
+      }
+    ]
   }
 }
