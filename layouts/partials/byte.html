@@ -684,7 +684,11 @@
           updTimer = setTimeout(step, 70 + Math.random() * 160);
         } else {
           byte.classList.add('is-updated');
-          updTimer = setTimeout(stopUpdate, 1200);
+          updTimer = setTimeout(function () {
+            stopUpdate();
+            // Si la pidió el usuario, al terminar vuelve a saludar
+            if (force === true) say('inicio');
+          }, 1200);
         }
       })();
     }
