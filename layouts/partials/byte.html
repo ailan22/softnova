@@ -55,6 +55,20 @@
       <path d="M52 140q48 30 96 0" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"
         filter="url(#sn-byte-neon)" opacity=".9" />
 
+      <!-- Bombillitos decorativos entre la pantalla y la franja neón -->
+      <g class="sn-byte-bulbs" filter="url(#sn-byte-neon)">
+        <circle cx="78" cy="138" r="4" fill="#0b1d5a" stroke="#94a3b8" stroke-opacity=".5" />
+        <circle class="sn-byte-bulb" cx="78" cy="138" r="2.6" fill="#22d3ee" style="--d: 0s;" />
+        <circle cx="89" cy="140.5" r="4" fill="#0b1d5a" stroke="#94a3b8" stroke-opacity=".5" />
+        <circle class="sn-byte-bulb" cx="89" cy="140.5" r="2.6" fill="#4ade80" style="--d: .3s;" />
+        <circle cx="100" cy="141.5" r="4" fill="#0b1d5a" stroke="#94a3b8" stroke-opacity=".5" />
+        <circle class="sn-byte-bulb" cx="100" cy="141.5" r="2.6" fill="#fbbf24" style="--d: .6s;" />
+        <circle cx="111" cy="140.5" r="4" fill="#0b1d5a" stroke="#94a3b8" stroke-opacity=".5" />
+        <circle class="sn-byte-bulb" cx="111" cy="140.5" r="2.6" fill="#a78bfa" style="--d: .9s;" />
+        <circle cx="122" cy="138" r="4" fill="#0b1d5a" stroke="#94a3b8" stroke-opacity=".5" />
+        <circle class="sn-byte-bulb" cx="122" cy="138" r="2.6" fill="#22d3ee" style="--d: 1.2s;" />
+      </g>
+
       <!-- Pantalla LED -->
       <rect class="sn-byte-screen-led" x="58" y="72" width="84" height="56" rx="24" fill="#050a22" stroke="#22d3ee"
         stroke-opacity=".55" stroke-width="2" />
@@ -73,22 +87,61 @@
         </g>
         <path d="M89 113q11 8 22 0" fill="none" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round" />
       </g>
+      <!-- Pantalla de actualización: cada minuto Byte "se actualiza" (texto + barra hasta 100%) -->
+      <g class="sn-byte-update" aria-hidden="true">
+        <text class="sn-byte-update-label" x="100" y="94" text-anchor="middle">actualizando<tspan class="sn-byte-dots">...</tspan></text>
+        <rect x="72" y="99" width="56" height="7" rx="3.5" fill="#0b1d5a" stroke="#22d3ee" stroke-opacity=".6" />
+        <rect class="sn-byte-update-bar" x="73.5" y="100.5" width="0" height="4" rx="2" fill="#22d3ee"
+          filter="url(#sn-byte-neon)" />
+        <text class="sn-byte-update-pct" x="100" y="117" text-anchor="middle">0%</text>
+      </g>
+      <!-- Teclado y manitos: aparecen mientras Byte "se actualiza" y tipea -->
+      <g class="sn-byte-typing" aria-hidden="true">
+        <g class="sn-byte-keyboard">
+          <rect x="60" y="175" width="80" height="20" rx="5" fill="#0f1d5c" stroke="#22d3ee" stroke-opacity=".8" />
+          <rect class="sn-byte-key" x="64.5" y="177.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key is-lit" x="74.8" y="177.5" width="8" height="4.5" rx="1.2" style="--d: 0s;" />
+          <rect class="sn-byte-key" x="85.1" y="177.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key" x="95.4" y="177.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key is-lit" x="105.7" y="177.5" width="8" height="4.5" rx="1.2" style="--d: .35s;" />
+          <rect class="sn-byte-key" x="116.0" y="177.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key is-lit" x="126.3" y="177.5" width="8" height="4.5" rx="1.2" style="--d: .7s;" />
+          <rect class="sn-byte-key" x="64.5" y="183.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key" x="74.8" y="183.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key is-lit" x="85.1" y="183.5" width="8" height="4.5" rx="1.2" style="--d: .15s;" />
+          <rect class="sn-byte-key" x="95.4" y="183.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key" x="105.7" y="183.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key is-lit" x="116.0" y="183.5" width="8" height="4.5" rx="1.2" style="--d: .5s;" />
+          <rect class="sn-byte-key" x="126.3" y="183.5" width="8" height="4.5" rx="1.2" />
+          <rect class="sn-byte-key is-lit" x="82" y="189.5" width="36" height="3.5" rx="1.5" style="--d: .25s;" />
+        </g>
+        <ellipse class="sn-byte-hand" cx="84" cy="177" rx="7" ry="5.5" fill="url(#sn-byte-pearl)" stroke="#22d3ee"
+          stroke-opacity=".6" transform="rotate(-12 84 177)" />
+        <ellipse class="sn-byte-hand sn-byte-hand-r" cx="116" cy="177" rx="7" ry="5.5" fill="url(#sn-byte-pearl)"
+          stroke="#22d3ee" stroke-opacity=".6" transform="rotate(12 116 177)" />
+      </g>
     </g>
 
     <!-- Módulos de herramientas flotantes -->
-    <!-- Pincel de diseño -->
+    <!-- Pincel de diseño (oculto)
     <g class="sn-byte-tool" style="--d: 0s; --r: -8deg;">
       <rect x="2" y="44" width="36" height="36" rx="10" fill="#0f1d5c" stroke="#22d3ee" stroke-opacity=".8" />
       <path d="M28 52 17 63" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
       <path d="M17 63c-4 0-6 3-6 7 0 1-1 2-2 2 2 2 4 2 6 2 4 0 6-3 6-6Z" fill="#a78bfa" />
+    </g>-->
+    <!-- Botón actualizar: al tocarlo Byte se actualiza (teclado, manitos y barra de carga) -->
+    <g class="sn-byte-tool sn-byte-cursor" style="--d: -1.4s; --r: 8deg;">
+      <title>Actualizar a Byte</title>
+      <rect class="sn-byte-cursor-box" x="164" y="40" width="34" height="34" rx="10" fill="#0f1d5c" stroke="#22d3ee"
+        stroke-opacity=".8" />
+      <!-- Ícono de actualizar: flecha circular (gira mientras se actualiza) -->
+      <g class="sn-byte-refresh" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M189 57a8 8 0 1 1-2.34-5.66" />
+        <path d="M187.5 45.8v5.9h-5.9" />
+      </g>
     </g>
-    <!-- Cursor -->
-    <g class="sn-byte-tool" style="--d: -1.4s; --r: 8deg;">
-      <rect x="164" y="40" width="34" height="34" rx="10" fill="#0f1d5c" stroke="#22d3ee" stroke-opacity=".8" />
-      <path d="M175 48v17l4.5-4 3 6.5 2.5-1-3-6.5h5.5Z" fill="#fff" stroke="#0a1440" stroke-width="1"
-        stroke-linejoin="round" />
-    </g>
-    <!-- Servidor de datos -->
+    <!-- Servidor de datos 
     <g class="sn-byte-tool" style="--d: -2.6s; --r: -6deg;">
       <rect x="160" y="150" width="36" height="38" rx="10" fill="#0f1d5c" stroke="#22d3ee" stroke-opacity=".8" />
       <rect x="168" y="157" width="20" height="9" rx="2.5" fill="#1e3a8a" />
@@ -97,7 +150,7 @@
       <circle class="sn-byte-blink" cx="172.5" cy="173.5" r="1.8" fill="#4ade80" style="animation-delay: .5s;" />
       <rect x="177" y="160.5" width="8" height="2" rx="1" fill="#60a5fa" />
       <rect x="177" y="172.5" width="8" height="2" rx="1" fill="#60a5fa" />
-    </g>
+    </g>-->
   </svg>
 </div>
 
@@ -374,6 +427,137 @@
     opacity: 1;
   }
 
+  /* Bombillitos: se encienden en secuencia, como luces de estado */
+  .sn-byte-bulb {
+    animation: sn-byte-bulb 1.8s ease-in-out infinite;
+    animation-delay: var(--d);
+  }
+
+  /* Mientras se actualiza titilan rápido */
+  .sn-byte.is-updating .sn-byte-bulb {
+    animation-duration: .5s;
+  }
+
+  @keyframes sn-byte-bulb {
+    0%, 100% { opacity: .45; }
+    35% { opacity: 1; }
+  }
+
+  /* Cuadrito del cursor: se puede tocar para que Byte se actualice */
+  .sn-byte-cursor {
+    cursor: pointer;
+  }
+
+  .sn-byte-cursor-box {
+    transition: fill .2s ease, stroke-opacity .2s ease;
+  }
+
+  .sn-byte-cursor:hover .sn-byte-cursor-box,
+  .sn-byte.is-updating .sn-byte-cursor-box {
+    fill: #1d4ed8;
+    stroke-opacity: 1;
+  }
+
+  .sn-byte-refresh {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .sn-byte.is-updating .sn-byte-refresh {
+    animation: sn-byte-spin .9s linear infinite;
+  }
+
+  @keyframes sn-byte-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .sn-byte-cursor.is-pressed .sn-byte-cursor-box {
+    fill: #22d3ee;
+  }
+
+  /* Teclado y manitos: salen de abajo de Byte mientras se actualiza */
+  .sn-byte-typing {
+    opacity: 0;
+    transform: translateY(-16px) scale(.5);
+    transform-box: fill-box;
+    transform-origin: 50% 0;
+    transition: opacity .2s ease, transform .4s cubic-bezier(0.34, 1.5, 0.64, 1);
+    pointer-events: none;
+  }
+
+  .sn-byte.is-updating .sn-byte-typing {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sn-byte-key {
+    fill: #1e3a8a;
+  }
+
+  /* Teclas que se iluminan al "presionarlas" */
+  .sn-byte.is-updating .sn-byte-key.is-lit {
+    animation: sn-byte-key .9s steps(1) infinite;
+    animation-delay: var(--d);
+  }
+
+  /* Manitos tipeando, alternadas */
+  .sn-byte.is-updating .sn-byte-hand {
+    animation: sn-byte-type .32s ease-in-out infinite alternate;
+  }
+
+  .sn-byte.is-updating .sn-byte-hand-r {
+    animation-delay: -.16s;
+  }
+
+  @keyframes sn-byte-key {
+    0% { fill: #67e8f9; }
+    30% { fill: #1e3a8a; }
+  }
+
+  @keyframes sn-byte-type {
+    from { translate: 0 -4px; }
+    to { translate: 0 1px; }
+  }
+
+  /* Modo "actualizando": la cara se apaga y aparece la barra de carga */
+  .sn-byte-face {
+    transition: opacity .25s ease;
+  }
+
+  .sn-byte-update {
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none;
+  }
+
+  .sn-byte.is-updating .sn-byte-face {
+    opacity: 0;
+  }
+
+  .sn-byte.is-updating .sn-byte-update {
+    opacity: 1;
+  }
+
+  .sn-byte-update-label,
+  .sn-byte-update-pct {
+    fill: #67e8f9;
+    font: 700 7.2px ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .02em;
+  }
+
+  .sn-byte-update-pct {
+    font-size: 9px;
+    fill: #e0f2fe;
+  }
+
+  .sn-byte-dots {
+    animation: sn-byte-glow 1s steps(1) infinite;
+  }
+
+  .sn-byte.is-updated .sn-byte-update-pct {
+    fill: #4ade80;
+  }
+
   /* Al saludar da un saltito */
   .sn-byte.is-hop svg {
     animation: sn-byte-hop .6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -448,6 +632,7 @@
       titleEl.textContent = m[0];
       textEl.textContent = m[1];
       clearTimeout(talkTimer);
+      stopUpdate();
       byte.classList.add('is-talking', 'is-happy');
       byte.classList.remove('is-hop');
       void byte.offsetWidth;
@@ -458,8 +643,65 @@
     }
 
     setTimeout(function () { say('inicio', 5500); }, 1200);
-    byte.addEventListener('mouseenter', function () { say(current); });
-    byte.addEventListener('click', function () { say(current); });
+
+    // ---- Cada minuto Byte "se actualiza": muestra "actualizando..." y una barra hasta 100% ----
+    var updBar = byte.querySelector('.sn-byte-update-bar');
+    var updPct = byte.querySelector('.sn-byte-update-pct');
+    var updTimer = null;
+    var BAR_W = 53;
+
+    function stopUpdate() {
+      clearTimeout(updTimer);
+      byte.classList.remove('is-updating', 'is-updated');
+    }
+
+    // force: lo pidió el usuario tocando el cursor (corta el mensaje que esté mostrando)
+    function runUpdate(force) {
+      if (byte.classList.contains('is-updating')) return;
+      if (force === true) {
+        clearTimeout(talkTimer);
+        byte.classList.remove('is-talking', 'is-happy');
+      } else if (document.hidden || byte.classList.contains('is-talking')) {
+        // Automático: no interrumpe un mensaje ni corre con la pestaña oculta
+        return;
+      }
+      var pct = 0;
+      updBar.setAttribute('width', 0);
+      updPct.textContent = '0%';
+      byte.classList.remove('is-updated');
+      byte.classList.add('is-updating');
+      (function step() {
+        // Avance irregular, como una carga real
+        pct = Math.min(100, pct + 2 + Math.floor(Math.random() * 7));
+        updBar.setAttribute('width', (BAR_W * pct / 100).toFixed(1));
+        updPct.textContent = pct + '%';
+        if (pct < 100) {
+          updTimer = setTimeout(step, 70 + Math.random() * 160);
+        } else {
+          byte.classList.add('is-updated');
+          updTimer = setTimeout(stopUpdate, 1200);
+        }
+      })();
+    }
+
+    setInterval(runUpdate, 60000);
+
+    var cursorBtn = byte.querySelector('.sn-byte-cursor');
+    if (cursorBtn) {
+      cursorBtn.addEventListener('click', function (e) {
+        e.stopPropagation(); // que no dispare el saludo de Byte
+        cursorBtn.classList.add('is-pressed');
+        setTimeout(function () { cursorBtn.classList.remove('is-pressed'); }, 180);
+        runUpdate(true);
+      });
+    }
+
+    // Pasar el mouse o tocarlo lo hace saludar (salvo mientras se actualiza)
+    function greet() {
+      if (!byte.classList.contains('is-updating')) say(current);
+    }
+    byte.addEventListener('mouseenter', greet);
+    byte.addEventListener('click', greet);
 
     // ---- Acompañar al usuario mientras navega ----
     // En el hero, Byte vive dentro de su lugar (#sn-byte-anchor) y se desplaza con la página.
