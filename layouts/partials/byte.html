@@ -134,11 +134,16 @@
       <title>Actualizar a Byte</title>
       <rect class="sn-byte-cursor-box" x="164" y="40" width="34" height="34" rx="10" fill="#0f1d5c" stroke="#22d3ee"
         stroke-opacity=".8" />
-      <!-- Ícono de actualizar: flecha circular (gira mientras se actualiza) -->
-      <g class="sn-byte-refresh" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"
-        stroke-linejoin="round">
-        <path d="M189 57a8 8 0 1 1-2.34-5.66" />
-        <path d="M187.5 45.8v5.9h-5.9" />
+      <!-- Ícono de actualizar: dos flechas en ciclo (gira mientras se actualiza) -->
+      <g class="sn-byte-refresh" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round">
+        <g>
+          <path d="M174.20 60.17A7.5 7.5 0 0 1 186.75 52.18" />
+          <path d="M189.66 49.74 189.96 56.01 183.83 54.62Z" fill="#fff" stroke-width="1.2" stroke-linejoin="round" />
+        </g>
+        <g transform="rotate(180 181 57)">
+          <path d="M174.20 60.17A7.5 7.5 0 0 1 186.75 52.18" />
+          <path d="M189.66 49.74 189.96 56.01 183.83 54.62Z" fill="#fff" stroke-width="1.2" stroke-linejoin="round" />
+        </g>
       </g>
     </g>
     <!-- Servidor de datos 
