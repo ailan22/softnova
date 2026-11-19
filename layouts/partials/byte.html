@@ -5,6 +5,8 @@
      - Vive en la pantalla de la laptop del hero. Al bajar sale volando a la esquina inferior derecha
        y queda fijo; en cada sección nueva comenta algo. Al volver arriba regresa a la laptop. -->
 <div class="sn-byte" id="sn-byte">
+  <!-- Mensaje en forma de holograma, proyectado desde la pantalla-cara de Byte -->
+  <span class="sn-byte-beam" aria-hidden="true"></span>
   <div class="sn-byte-bubble" role="status">
     <strong class="sn-byte-title">¡Hola! Soy Byte 👋</strong>
     <span class="sn-byte-text">¿Creamos tu web juntos?</span>
@@ -54,8 +56,8 @@
         filter="url(#sn-byte-neon)" opacity=".9" />
 
       <!-- Pantalla LED -->
-      <rect x="58" y="72" width="84" height="56" rx="24" fill="#050a22" stroke="#22d3ee" stroke-opacity=".55"
-        stroke-width="2" />
+      <rect class="sn-byte-screen-led" x="58" y="72" width="84" height="56" rx="24" fill="#050a22" stroke="#22d3ee"
+        stroke-opacity=".55" stroke-width="2" />
       <g class="sn-byte-face" filter="url(#sn-byte-neon)">
         <g class="sn-byte-eyes">
           <!-- Ojos normales -->
@@ -130,6 +132,19 @@
     overflow: visible; /* que no se recorten el globo ni las herramientas */
   }
 
+  /* Escenario del hero donde vive Byte: deja lugar arriba para el holograma
+     así no se encima con los botones */
+  .sn-byte-stage {
+    position: relative;
+    height: 215px;
+  }
+
+  @media (min-width: 640px) {
+    .sn-byte-stage { height: auto; aspect-ratio: 16 / 10; }
+  }
+
+  .sn-byte-stage .sn-byte-home { top: 64%; }
+
   .sn-byte-home {
     position: absolute;
     left: 50%;
@@ -187,28 +202,36 @@
     overflow: visible;
   }
 
-  /* Globo de diálogo */
+  /* Mensaje holograma: panel de vidrio azul proyectado desde la cara de Byte */
   .sn-byte-bubble {
     position: absolute;
     right: 40%;
-    bottom: 92%;
+    bottom: 90%;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 2px;
     width: max-content;
-    max-width: 210px;
-    padding: 10px 14px;
-    border-radius: 16px 16px 4px 16px;
+    max-width: 220px;
+    padding: 11px 15px 12px;
+    overflow: hidden;
+    border-radius: 12px;
     font-size: 13px;
     line-height: 1.35;
-    color: #cbd5e1;
-    background: rgba(10, 20, 64, 0.92);
-    border: 1px solid rgba(34, 211, 238, 0.6);
-    box-shadow: 0 0 24px -6px rgba(34, 211, 238, 0.6);
+    color: #e0f2fe;
+    text-shadow: 0 0 8px rgba(103, 232, 249, .7);
+    background:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, .05) 0 1px, transparent 1px 3px),
+      linear-gradient(160deg, rgba(12, 74, 110, .96) 0%, rgba(8, 47, 73, .97) 60%, rgba(4, 22, 48, .98) 100%);
+    border: 1px solid rgba(103, 232, 249, .85);
+    box-shadow:
+      0 0 0 1px rgba(34, 211, 238, .15),
+      0 0 28px -2px rgba(34, 211, 238, .55),
+      inset 0 0 22px rgba(103, 232, 249, .25);
     opacity: 0;
-    transform: translateY(8px) scale(.9);
-    transform-origin: bottom right;
-    transition: opacity .35s ease, transform .45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translate(18%, 40%) scale(.15);
+    transform-origin: 100% 100%;
+    transition: opacity .3s ease, transform .55s cubic-bezier(0.34, 1.4, 0.64, 1);
     pointer-events: none;
   }
 
@@ -217,9 +240,80 @@
     font-weight: 700;
   }
 
+  /* Línea de escaneo que recorre el holograma */
+  .sn-byte-bubble::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -30%;
+    height: 30%;
+    background: linear-gradient(180deg, transparent, rgba(165, 243, 252, .35), transparent);
+    animation: sn-byte-scan 2.4s linear infinite;
+  }
+
+  /* Brillo en la esquina, como reflejo en el vidrio */
+  .sn-byte-bubble::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, rgba(255, 255, 255, .22) 0%, transparent 35%);
+    pointer-events: none;
+  }
+
   .sn-byte.is-talking .sn-byte-bubble {
     opacity: 1;
     transform: none;
+    animation: sn-byte-flicker 3.5s linear .6s infinite;
+  }
+
+  /* Haz de luz que sale de la cara hacia el holograma */
+  .sn-byte-beam {
+    position: absolute;
+    left: -40%;
+    right: 40%;
+    top: 9%;
+    height: 25%;
+    background: linear-gradient(0deg, rgba(165, 243, 252, .95) 0%, rgba(34, 211, 238, .55) 55%, rgba(34, 211, 238, .15) 100%);
+    clip-path: polygon(25% 0, 100% 0, 96% 100%, 72% 100%);
+    filter: blur(.6px) drop-shadow(0 0 6px rgba(34, 211, 238, .8));
+    mix-blend-mode: screen;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: 90% 100%;
+    transition: opacity .25s ease, transform .35s ease-out;
+    pointer-events: none;
+  }
+
+  .sn-byte.is-talking .sn-byte-beam {
+    opacity: 1;
+    transform: none;
+    animation: sn-byte-beam 1.8s ease-in-out .4s infinite;
+  }
+
+  /* La pantalla-cara brilla más mientras proyecta */
+  .sn-byte-screen-led {
+    transition: stroke-opacity .3s ease, stroke-width .3s ease;
+  }
+
+  .sn-byte.is-talking .sn-byte-screen-led {
+    stroke-opacity: 1;
+    stroke-width: 3;
+  }
+
+  @keyframes sn-byte-scan {
+    to { top: 100%; }
+  }
+
+  @keyframes sn-byte-flicker {
+    0%, 44%, 48%, 100% { opacity: 1; }
+    45% { opacity: .82; }
+    46% { opacity: .95; }
+    47% { opacity: .88; }
+  }
+
+  @keyframes sn-byte-beam {
+    50% { opacity: .55; }
   }
 
   /* Flotación */
@@ -315,6 +409,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .sn-byte *,
+    .sn-byte *::before,
     .sn-byte.is-hop svg {
       animation: none !important;
       transition: none !important;
